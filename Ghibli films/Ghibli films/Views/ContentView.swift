@@ -10,30 +10,28 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(FilmsViewModel.self) private var filmVM
-
+    
     var body: some View {
         TabView {
-
+            
             Tab("Films", systemImage: "film.stack") {
                 FilmsListView()
             }
-
+            
             Tab("Search", systemImage: "magnifyingglass", role: .search) {
                 SearchView()
             }
-
+            
             Tab("Wiki", systemImage: "books.vertical.fill") {
                 WikiView()
             }
+            
+            Tab("Favorites", systemImage: "heart.fill") {
+                FavoritesFilm()
+            }
+            
+            
             /*
-             Tab("Favorites", systemImage: "heart.fill") {
-             FavoritesView()
-             }
-
-             Tab("Search", systemImage: "magnifyingglass", role: .search) {
-             SearchView()
-             }
-
              Tab("Profile", systemImage: "person.fill") {
              ProfileView()
              }*/

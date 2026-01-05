@@ -31,6 +31,7 @@
 		C8C66A832F0BE57700A242F3 /* SearchVm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C66A822F0BE57700A242F3 /* SearchVm.swift */; };
 		C8C66A852F0BF81A00A242F3 /* WikiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C66A842F0BF81A00A242F3 /* WikiView.swift */; };
 		C8C66A8D2F0C026200A242F3 /* DataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C66A8C2F0C026200A242F3 /* DataContainer.swift */; };
+		C8C66A8F2F0C128200A242F3 /* FavoritesFilm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C66A8E2F0C128200A242F3 /* FavoritesFilm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		C8C66A822F0BE57700A242F3 /* SearchVm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVm.swift; sourceTree = "<group>"; };
 		C8C66A842F0BF81A00A242F3 /* WikiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiView.swift; sourceTree = "<group>"; };
 		C8C66A8C2F0C026200A242F3 /* DataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataContainer.swift; sourceTree = "<group>"; };
+		C8C66A8E2F0C128200A242F3 /* FavoritesFilm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesFilm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				C8C66A752F0BC00E00A242F3 /* FilmDetail.swift */,
 				C8C66A802F0BDFC100A242F3 /* SearchView.swift */,
 				C8C66A842F0BF81A00A242F3 /* WikiView.swift */,
+				C8C66A8E2F0C128200A242F3 /* FavoritesFilm.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8C66A812F0BDFC100A242F3 /* SearchView.swift in Sources */,
+				C8C66A8F2F0C128200A242F3 /* FavoritesFilm.swift in Sources */,
 				C8C66A6F2F0BBBD500A242F3 /* FilmsListView.swift in Sources */,
 				C8C66A532F0BB59700A242F3 /* ContentView.swift in Sources */,
 				C8C66A712F0BBED000A242F3 /* ImageDownloader.swift in Sources */,
