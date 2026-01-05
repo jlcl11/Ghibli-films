@@ -21,9 +21,9 @@ struct FeaturedFilmCard: View {
                     .frame(width: 300, height: 180)
                     .clipped()
             } else {
-               ProgressView()
+                ProgressView()
             }
-
+            
             // Gradient Overlay
             LinearGradient(
                 gradient: Gradient(colors: [
@@ -35,7 +35,7 @@ struct FeaturedFilmCard: View {
                 endPoint: .top
             )
             .frame(width: 300, height: 180)
-
+            
             // Info Overlay
             VStack(alignment: .leading, spacing: 4) {
                 Text(film.title)
@@ -43,16 +43,16 @@ struct FeaturedFilmCard: View {
                     .fontWeight(.bold)
                     .foregroundStyle(.white)
                     .lineLimit(2)
-
+                
                 Text(film.director)
                     .font(.caption)
                     .foregroundStyle(.white.opacity(0.9))
-
+                
                 HStack(spacing: 4) {
                     Image(systemName: "star.fill")
                         .font(.caption2)
                         .foregroundStyle(.yellow)
-
+                    
                     Text("\(film.rtScore)%")
                         .font(.caption2)
                         .fontWeight(.semibold)
@@ -84,7 +84,7 @@ struct FeaturedFilmCard: View {
                 print(error)
             }
         }
-
+        
     }
 }
 
