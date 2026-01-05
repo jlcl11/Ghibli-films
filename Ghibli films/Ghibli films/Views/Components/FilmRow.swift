@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FilmRow: View {
     let film: Film
+    var isSwipable: Bool
     @State private var image: UIImage?
     
     var body: some View {
@@ -77,7 +78,7 @@ struct FilmRow: View {
             Spacer()
         }
         .padding(.vertical, 10)
-            
+        //TODO: SwipeActions
         
         .onAppear {
             guard let poster = film.image else { return }
@@ -103,5 +104,5 @@ struct FilmRow: View {
 }
 
 #Preview {
-    FilmRow(film: .mock)
+    FilmRow(film: .mock, isSwipable: true)
 }
