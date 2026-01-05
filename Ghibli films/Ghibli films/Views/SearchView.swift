@@ -6,27 +6,26 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct SearchView: View {
     @Environment(FilmsViewModel.self) private var vm
     @State private var searchVM = SearchVM()
-    
+    @Query private var films: [Film]
+
     var body: some View {
-        
+
         NavigationStack {
             Group {
-                if searchVM.filterFilms(vm.films).isEmpty && !searchVM.searchText.isEmpty {
+                if searchVM.filterFilms(films).isEmpty && !searchVM.searchText.isEmpty {
                     ContentUnavailableView(
                         "No Results",
                         systemImage: "magnifyingglass",
                         description: Text("No films match '\(searchVM.searchText)'")
                     )
                 } else {
-                    List(searchVM.filterFilms(vm.films)) { film in
-                        FilmRow(
-                            film: film, isSwipable: false
-                            
-                        )
+                    List(searchVM.filterFilms(films)) { film in
+                        FilmRow(film: film)
                     }
                     .listStyle(.plain)
                     .navigationDestination(for: Film.self) { film in
@@ -36,11 +35,13 @@ struct SearchView: View {
             }
             .searchable(text: $searchVM.searchText, prompt: "Search films...")
             .navigationTitle("Search")
-          
+
         }
     }
 }
 
 #Preview {
-    SearchView().environment(FilmsViewModel())
+    SearchView()
+        .environment(FilmsViewModel())
+        .modelContainer(for: Film.self)
 }

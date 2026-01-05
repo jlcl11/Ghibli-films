@@ -6,61 +6,61 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct FilmsListView: View {
     @Environment(FilmsViewModel.self) private var filmVM
-    
+    @Environment(\.modelContext) private var modelContext
+    @Query private var films: [Film]
+
+    var featuredFilms: [Film] {
+        films.sorted(by: { $0.rtScore > $1.rtScore }).prefix(5).map { $0 }
+    }
+
     var body: some View {
-        VStack{
-            switch filmVM.state {
-            case .loading:
-                ProgressView()
-            case .loaded:
-                NavigationStack {
-                    
-                    List {
-                        Section {
-                            FilmsCarrousel(featuredFilms: filmVM.featuredFilms)
-                        } header: {
-                            Text("Top Rated")
-                                .font(.headline)
-                                .foregroundStyle(.primary)
-                                .textCase(nil)
-                        }
-                        
-                        Section {
-                            FilmList(films: filmVM.films, isSwipeable: true)
-                            
-                        } header: {
-                            Text("All Films")
-                                .font(.headline)
-                                .foregroundStyle(.primary)
-                                .textCase(nil)
-                        }
-                        
-                    } .listStyle(.plain)
-                        .navigationTitle("Films")
-                        .navigationDestination(for: Film.self) { film in
-                            FilmDetail(film: film)
-                        }
+        NavigationStack {
+            if films.isEmpty {
+                ContentUnavailableView(
+                    "No Films Available",
+                    systemImage: "film",
+                    description: Text("Pull to refresh to load films from the server.")
+                )
+            } else {
+                List {
+                    Section {
+                        FilmsCarrousel(featuredFilms: featuredFilms)
+                    } header: {
+                        Text("Top Rated")
+                            .font(.headline)
+                            .foregroundStyle(.primary)
+                            .textCase(nil)
+                    }
+
+                    Section {
+                        FilmList(films: films)
+                    } header: {
+                        Text("All Films")
+                            .font(.headline)
+                            .foregroundStyle(.primary)
+                            .textCase(nil)
+                    }
                 }
-            case .empty:
-                ContentUnavailableView("No employee data",
-                                       systemImage: "person",
-                                       description: Text("There's no person data yet.\nTry to refresh the data or contact support."))
+                .listStyle(.plain)
+                .navigationTitle("Films")
+                .navigationDestination(for: Film.self) { film in
+                    FilmDetail(film: film)
+                }
             }
-            
-            
-        }.refreshable {
-            await filmVM.getFilms()
+        }
+        .refreshable {
+            await filmVM.refreshFilms(modelContext: modelContext)
         }
     }
 }
 
 #Preview {
     @Previewable @State var vm = FilmsViewModel()
-    
-    FilmsListView().task {
-        await vm.getFilms()
-    }
+    FilmsListView()
+        .environment(vm)
+        .modelContainer(for: Film.self)
 }

@@ -8,8 +8,8 @@
 import Foundation
 //TODO: Seguir con el resto de modelos
 protocol NetworkRepository: Sendable, NetworkInteractor {
-    func getFilms() async throws(NetworkError) -> [Film]
-    func getFilm(id: Int) async throws(NetworkError) -> Film
+    func getFilms() async throws(NetworkError) -> [FilmDTO]
+    func getFilm(id: Int) async throws(NetworkError) -> FilmDTO
     /*func getPeople() async throws(NetworkError) -> [Person]
     func getPerson(id: Int) async throws(NetworkError) -> Person
     func getSpecies() async throws(NetworkError) -> [Species]
@@ -22,12 +22,12 @@ protocol NetworkRepository: Sendable, NetworkInteractor {
 
 struct Network: NetworkRepository {
 
-    func getFilms() async throws(NetworkError) -> [Film] {
-        try await getJSON(.get(url: .getFilms), type: [FilmDTO].self).map(\.toFilm)
+    func getFilms() async throws(NetworkError) -> [FilmDTO] {
+        try await getJSON(.get(url: .getFilms), type: [FilmDTO].self)
     }
 
-    func getFilm(id: Int) async throws(NetworkError) -> Film {
-        try await getJSON(.get(url: .getById(.films, id: id)), type: FilmDTO.self).toFilm
+    func getFilm(id: Int) async throws(NetworkError) -> FilmDTO {
+        try await getJSON(.get(url: .getById(.films, id: id)), type: FilmDTO.self)
     }
 /*
     func getPeople() async throws(NetworkError) -> [Person] {

@@ -8,23 +8,55 @@
 import Foundation
 import SwiftData
 
-struct Film: Identifiable, Hashable {
-    let id: String
-    let title: String
-    let originalTitle: String
-    let image: URL?
-    let movieBanner: URL?
-    let description: String
-    let director: String
-    let producer: String
-    let releaseDate: String
-    let runningTime: Int
-    let rtScore: Int
-    let people: [URL]
-    let species: [URL]
-    let locations: [URL]
-    let vehicles: [URL]
-    let url: URL
+@Model
+final class Film {
+    #Index<Film>([\.title], [\.id])
+
+    @Attribute(.unique) var id: String
+    var title: String
+    var originalTitle: String
+    var image: URL?
+    var movieBanner: URL?
+    var filmDescription: String
+    var director: String
+    var producer: String
+    var releaseDate: String
+    var runningTime: Int
+    var rtScore: Int
+    var people: [URL]
+    var species: [URL]
+    var locations: [URL]
+    var vehicles: [URL]
+    var url: URL
+
+    // User-specific properties for persistence
+    var isFavorite: Bool = false
+    var isWatched: Bool = false
+
+    var scorePercentage: String {
+        "\(rtScore)%"
+    }
+
+    init(id: String, title: String, originalTitle: String, image: URL?, movieBanner: URL?, filmDescription: String, director: String, producer: String, releaseDate: String, runningTime: Int, rtScore: Int, people: [URL], species: [URL], locations: [URL], vehicles: [URL], url: URL, isFavorite: Bool = false, isWatched: Bool = false) {
+        self.id = id
+        self.title = title
+        self.originalTitle = originalTitle
+        self.image = image
+        self.movieBanner = movieBanner
+        self.filmDescription = filmDescription
+        self.director = director
+        self.producer = producer
+        self.releaseDate = releaseDate
+        self.runningTime = runningTime
+        self.rtScore = rtScore
+        self.people = people
+        self.species = species
+        self.locations = locations
+        self.vehicles = vehicles
+        self.url = url
+        self.isFavorite = isFavorite
+        self.isWatched = isWatched
+    }
 }
 
 // MARK: - Mock Data Extension
@@ -36,7 +68,7 @@ extension Film {
             originalTitle: "天空の城ラピュタ",
             image: URL(string: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/npOnzAbLh6VOIu3naU5QaEcTepo.jpg"),
             movieBanner: URL(string: "https://image.tmdb.org/t/p/w533_and_h300_bestv2/3cyjYtLWCBE1uvWINHFsFnE8LUK.jpg"),
-            description: "The orphan Sheeta inherited a mysterious crystal that links her to the mythical sky-kingdom of Laputa. With the help of resourceful Pazu and a rollicking band of sky pirates, she makes her way to the ruins of the once-great civilization.",
+            filmDescription: "The orphan Sheeta inherited a mysterious crystal that links her to the mythical sky-kingdom of Laputa. With the help of resourceful Pazu and a rollicking band of sky pirates, she makes her way to the ruins of the once-great civilization.",
             director: "Hayao Miyazaki",
             producer: "Isao Takahata",
             releaseDate: "1986",
@@ -57,5 +89,5 @@ extension Film {
             url: URL(string: "https://ghibliapi.vercel.app/films/2baf70d1-42bb-4437-b551-e5fed5a87abe")!
         )
     }
-    
+
 }

@@ -30,7 +30,6 @@
 		C8C66A812F0BDFC100A242F3 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C66A802F0BDFC100A242F3 /* SearchView.swift */; };
 		C8C66A832F0BE57700A242F3 /* SearchVm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C66A822F0BE57700A242F3 /* SearchVm.swift */; };
 		C8C66A852F0BF81A00A242F3 /* WikiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C66A842F0BF81A00A242F3 /* WikiView.swift */; };
-		C8C66A882F0BFBD200A242F3 /* FavoriteFilm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C66A872F0BFBD200A242F3 /* FavoriteFilm.swift */; };
 		C8C66A8D2F0C026200A242F3 /* DataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C66A8C2F0C026200A242F3 /* DataContainer.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,7 +58,6 @@
 		C8C66A802F0BDFC100A242F3 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		C8C66A822F0BE57700A242F3 /* SearchVm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVm.swift; sourceTree = "<group>"; };
 		C8C66A842F0BF81A00A242F3 /* WikiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiView.swift; sourceTree = "<group>"; };
-		C8C66A872F0BFBD200A242F3 /* FavoriteFilm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFilm.swift; sourceTree = "<group>"; };
 		C8C66A8C2F0C026200A242F3 /* DataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -193,18 +191,9 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		C8C66A862F0BFAC500A242F3 /* DataModel */ = {
-			isa = PBXGroup;
-			children = (
-				C8C66A872F0BFBD200A242F3 /* FavoriteFilm.swift */,
-			);
-			path = DataModel;
-			sourceTree = "<group>";
-		};
 		C8C66A8B2F0BFF5D00A242F3 /* Persistance */ = {
 			isa = PBXGroup;
 			children = (
-				C8C66A862F0BFAC500A242F3 /* DataModel */,
 				C8C66A8C2F0C026200A242F3 /* DataContainer.swift */,
 			);
 			path = Persistance;
@@ -285,7 +274,6 @@
 				C8C66A812F0BDFC100A242F3 /* SearchView.swift in Sources */,
 				C8C66A6F2F0BBBD500A242F3 /* FilmsListView.swift in Sources */,
 				C8C66A532F0BB59700A242F3 /* ContentView.swift in Sources */,
-				C8C66A882F0BFBD200A242F3 /* FavoriteFilm.swift in Sources */,
 				C8C66A712F0BBED000A242F3 /* ImageDownloader.swift in Sources */,
 				C8C66A5C2F0BB79000A242F3 /* Film.swift in Sources */,
 				C8C66A662F0BB87600A242F3 /* NetworkError.swift in Sources */,
