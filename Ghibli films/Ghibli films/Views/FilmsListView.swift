@@ -17,27 +17,53 @@ struct FilmsListView: View {
                 ProgressView()
             case .loaded:
                 NavigationStack {
-                    List(filmVM.films) { film in
-                        NavigationLink(value: film) {
-                            FilmRow(film: film)
+                    
+                    List {
+                        Section {
+                            FilmsCarrousel(featuredFilms: filmVM.featuredFilms)
+                        } header: {
+                            Text("Top Rated")
+                                .font(.headline)
+                                .foregroundStyle(.primary)
+                                .textCase(nil)
                         }
-                    }
-                    .navigationTitle("Employees")
+                        
+                        Section {
+                            FilmList(films: filmVM.films, isSwipeable: true)
+                            
+                        } header: {
+                            Text("All Films")
+                                .font(.headline)
+                                .foregroundStyle(.primary)
+                                .textCase(nil)
+                        }
+                        
+                    } .listStyle(.plain)
+                 
+                    
+                
+                    .navigationTitle("Films")
                     .navigationDestination(for: Film.self) { film in
                         FilmDetail(film: film)
                     }
                 }
             case .empty:
-                ContentUnavailableView("No films found",
+                ContentUnavailableView("No employee data",
                                        systemImage: "person",
                                        description: Text("There's no person data yet.\nTry to refresh the data or contact support."))
             }
             
 
+        }.refreshable {
+            await filmVM.getFilms()
         }
     }
 }
 
 #Preview {
-    FilmsListView()
+    @Previewable @State var vm = FilmsViewModel()
+
+    FilmsListView().task {
+        await vm.getFilms()
+    }
 }
