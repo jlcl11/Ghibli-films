@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftData
 
 struct Film: Identifiable, Hashable {
     let id: String
