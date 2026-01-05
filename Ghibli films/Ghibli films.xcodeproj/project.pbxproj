@@ -21,6 +21,9 @@
 		C8C66A6D2F0BBA6200A242F3 /* FilmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C66A6C2F0BBA6200A242F3 /* FilmViewModel.swift */; };
 		C8C66A6F2F0BBBD500A242F3 /* FilmsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C66A6E2F0BBBD500A242F3 /* FilmsListView.swift */; };
 		C8C66A712F0BBED000A242F3 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C66A702F0BBED000A242F3 /* ImageDownloader.swift */; };
+		C8C66A742F0BBF2E00A242F3 /* FilmRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C66A732F0BBF2E00A242F3 /* FilmRow.swift */; };
+		C8C66A762F0BC00E00A242F3 /* FilmDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C66A752F0BC00E00A242F3 /* FilmDetail.swift */; };
+		C8C66A792F0BC05B00A242F3 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C66A782F0BC05B00A242F3 /* UIImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +42,9 @@
 		C8C66A6C2F0BBA6200A242F3 /* FilmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmViewModel.swift; sourceTree = "<group>"; };
 		C8C66A6E2F0BBBD500A242F3 /* FilmsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsListView.swift; sourceTree = "<group>"; };
 		C8C66A702F0BBED000A242F3 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		C8C66A732F0BBF2E00A242F3 /* FilmRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmRow.swift; sourceTree = "<group>"; };
+		C8C66A752F0BC00E00A242F3 /* FilmDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetail.swift; sourceTree = "<group>"; };
+		C8C66A782F0BC05B00A242F3 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,11 +77,12 @@
 		C8C66A512F0BB59700A242F3 /* Ghibli films */ = {
 			isa = PBXGroup;
 			children = (
+				C8C66A562F0BB60200A242F3 /* Views */,
 				C8C66A6B2F0BB98E00A242F3 /* ViewModels */,
+				C8C66A772F0BC04C00A242F3 /* Extensions */,
 				C8C66A602F0BB86A00A242F3 /* Interface */,
 				C8C66A5D2F0BB80500A242F3 /* Repository */,
 				C8C66A572F0BB6BA00A242F3 /* Model */,
-				C8C66A562F0BB60200A242F3 /* Views */,
 				C8C66A552F0BB5AD00A242F3 /* System */,
 				C8C66A4E2F0BB59700A242F3 /* Assets.xcassets */,
 			);
@@ -93,8 +100,10 @@
 		C8C66A562F0BB60200A242F3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C8C66A722F0BBF1C00A242F3 /* Components */,
 				C8C66A4F2F0BB59700A242F3 /* ContentView.swift */,
 				C8C66A6E2F0BBBD500A242F3 /* FilmsListView.swift */,
+				C8C66A752F0BC00E00A242F3 /* FilmDetail.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -143,6 +152,22 @@
 				C8C66A6C2F0BBA6200A242F3 /* FilmViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		C8C66A722F0BBF1C00A242F3 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C8C66A732F0BBF2E00A242F3 /* FilmRow.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		C8C66A772F0BC04C00A242F3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C8C66A782F0BC05B00A242F3 /* UIImage.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,10 +248,13 @@
 				C8C66A5C2F0BB79000A242F3 /* Film.swift in Sources */,
 				C8C66A662F0BB87600A242F3 /* NetworkError.swift in Sources */,
 				C8C66A672F0BB87600A242F3 /* NetworkInteractor.swift in Sources */,
+				C8C66A742F0BBF2E00A242F3 /* FilmRow.swift in Sources */,
 				C8C66A682F0BB87600A242F3 /* URL.swift in Sources */,
 				C8C66A6D2F0BBA6200A242F3 /* FilmViewModel.swift in Sources */,
+				C8C66A792F0BC05B00A242F3 /* UIImage.swift in Sources */,
 				C8C66A692F0BB87600A242F3 /* URLSession.swift in Sources */,
 				C8C66A6A2F0BB87600A242F3 /* URLRequest.swift in Sources */,
+				C8C66A762F0BC00E00A242F3 /* FilmDetail.swift in Sources */,
 				C8C66A5A2F0BB78200A242F3 /* FilmDTO.swift in Sources */,
 				C8C66A5F2F0BB82600A242F3 /* NetworkRepository.swift in Sources */,
 				C8C66A542F0BB59700A242F3 /* Ghibli_filmsApp.swift in Sources */,

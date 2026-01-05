@@ -16,9 +16,19 @@ struct FilmsListView: View {
             case .loading:
                 ProgressView()
             case .loaded:
-               // EmployeeList(vm: vm)
+                NavigationStack {
+                    List(filmVM.films) { film in
+                        NavigationLink(value: film) {
+                            FilmRow(film: film)
+                        }
+                    }
+                    .navigationTitle("Employees")
+                    .navigationDestination(for: Film.self) { film in
+                        FilmDetail(film: film)
+                    }
+                }
             case .empty:
-                ContentUnavailableView("No employee data",
+                ContentUnavailableView("No films found",
                                        systemImage: "person",
                                        description: Text("There's no person data yet.\nTry to refresh the data or contact support."))
             }
