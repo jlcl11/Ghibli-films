@@ -30,16 +30,16 @@ final class FilmsViewModel {
                 let searchInOriginalTitle = film.originalTitle.localizedStandardContains(searchText)
                 let searchInDescription = film.description.localizedStandardContains(searchText)
                 let searchInDirector = film.director.localizedStandardContains(searchText)
-
+                
                 guard searchInTitle || searchInOriginalTitle || searchInDescription || searchInDirector else {
                     return false
                 }
             }
-
+            
             return true
         }
     }
-
+    
     var featuredFilms: [Film] {
         films.sorted(by: { $0.rtScore > $1.rtScore }).prefix(5).map { $0 }
     }
@@ -50,11 +50,11 @@ final class FilmsViewModel {
     
     @MainActor
     func getFilms() async {
-
+        
         guard films.isEmpty else { return }
-
+        
         state = .loading
-
+        
         do {
             let fetchedFilms = try await repository.getFilms()
             films = fetchedFilms

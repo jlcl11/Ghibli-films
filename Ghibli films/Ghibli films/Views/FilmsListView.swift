@@ -39,13 +39,10 @@ struct FilmsListView: View {
                         }
                         
                     } .listStyle(.plain)
-                 
-                    
-                
-                    .navigationTitle("Films")
-                    .navigationDestination(for: Film.self) { film in
-                        FilmDetail(film: film)
-                    }
+                        .navigationTitle("Films")
+                        .navigationDestination(for: Film.self) { film in
+                            FilmDetail(film: film)
+                        }
                 }
             case .empty:
                 ContentUnavailableView("No employee data",
@@ -53,7 +50,7 @@ struct FilmsListView: View {
                                        description: Text("There's no person data yet.\nTry to refresh the data or contact support."))
             }
             
-
+            
         }.refreshable {
             await filmVM.getFilms()
         }
@@ -62,7 +59,7 @@ struct FilmsListView: View {
 
 #Preview {
     @Previewable @State var vm = FilmsViewModel()
-
+    
     FilmsListView().task {
         await vm.getFilms()
     }

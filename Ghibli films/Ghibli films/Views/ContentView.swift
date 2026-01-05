@@ -12,26 +12,26 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
-
+            
             Tab("Films", systemImage: "film.stack") {
                 FilmsListView()
             }
-
-          /*  Tab("Wiki", systemImage: "books.vertical.fill") {
-                WikiView()
-            }
-
-            Tab("Favorites", systemImage: "heart.fill") {
-                FavoritesView()
-            }
-
-            Tab("Search", systemImage: "magnifyingglass", role: .search) {
-                SearchView()
-            }
-
-            Tab("Profile", systemImage: "person.fill") {
-                ProfileView()
-            }*/
+            
+            /*  Tab("Wiki", systemImage: "books.vertical.fill") {
+             WikiView()
+             }
+             
+             Tab("Favorites", systemImage: "heart.fill") {
+             FavoritesView()
+             }
+             
+             Tab("Search", systemImage: "magnifyingglass", role: .search) {
+             SearchView()
+             }
+             
+             Tab("Profile", systemImage: "person.fill") {
+             ProfileView()
+             }*/
         }
         .task(priority: .high) {
             await filmVM.getFilms()

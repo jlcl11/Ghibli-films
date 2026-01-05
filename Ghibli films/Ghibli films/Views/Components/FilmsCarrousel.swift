@@ -13,26 +13,26 @@ struct FilmsCarrousel: View {
     
     var body: some View {
         
-            ScrollView(.horizontal) {
-                LazyHStack(spacing: 12) {
-                    ForEach(featuredFilms) { film in
-                        NavigationLink(value: film) {
-                            FeaturedFilmCard(film: film)
-                        }
-                        .buttonStyle(.plain)
+        ScrollView(.horizontal) {
+            LazyHStack(spacing: 12) {
+                ForEach(featuredFilms) { film in
+                    NavigationLink(value: film) {
+                        FeaturedFilmCard(film: film)
                     }
+                    .buttonStyle(.plain)
                 }
-                .scrollTargetLayout()
             }
-            .scrollTargetBehavior(.viewAligned)
-            .scrollClipDisabled()
-            .contentMargins(.horizontal, 5, for: .scrollContent)
-            .defaultScrollAnchor(.leading)
-            .scrollIndicators(.hidden)
-            .frame(height: 180)
-            .listRowInsets(EdgeInsets())
-            .listRowBackground(Color.clear)
-      
+            .scrollTargetLayout()
+        }
+        .scrollTargetBehavior(.viewAligned)
+        .scrollClipDisabled()
+        .contentMargins(.horizontal, 5, for: .scrollContent)
+        .defaultScrollAnchor(.leading)
+        .scrollIndicators(.hidden)
+        .frame(height: 180)
+        .listRowInsets(EdgeInsets())
+        .listRowBackground(Color.clear)
+        
     }
 }
 
