@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct Ghibli_filmsApp: App {
+    @State private var filmVM = FilmsViewModel()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(filmVM)
         }
     }
 }

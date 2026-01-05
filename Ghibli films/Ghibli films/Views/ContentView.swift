@@ -8,17 +8,37 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(FilmsViewModel.self) private var filmVM
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+
+            Tab("Films", systemImage: "film.stack") {
+                FilmsListView()
+            }
+
+          /*  Tab("Wiki", systemImage: "books.vertical.fill") {
+                WikiView()
+            }
+
+            Tab("Favorites", systemImage: "heart.fill") {
+                FavoritesView()
+            }
+
+            Tab("Search", systemImage: "magnifyingglass", role: .search) {
+                SearchView()
+            }
+
+            Tab("Profile", systemImage: "person.fill") {
+                ProfileView()
+            }*/
         }
-        .padding()
+        .task(priority: .high) {
+            await filmVM.getFilms()
+        }
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView().environment(FilmsViewModel())
 }
