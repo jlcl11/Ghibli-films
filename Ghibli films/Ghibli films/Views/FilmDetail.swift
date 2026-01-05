@@ -25,7 +25,7 @@ struct FilmDetail: View {
                 Rectangle()
                     .foregroundStyle(.gray)
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: .infinity, height: .infinity)
+                   
             }
             
             //MARK: Info

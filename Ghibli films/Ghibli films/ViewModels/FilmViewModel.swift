@@ -18,28 +18,10 @@ final class FilmsViewModel {
     let repository: NetworkRepository
     
     var films: [Film] = []
-    var searchText: String = ""
     var state: ViewState = .loading
     var showError: Bool = false
     var errorMsg: String = ""
-    
-    var displayedFilms: [Film] {
-        films.filter { film in
-            if !searchText.isEmpty {
-                let searchInTitle = film.title.localizedStandardContains(searchText)
-                let searchInOriginalTitle = film.originalTitle.localizedStandardContains(searchText)
-                let searchInDescription = film.description.localizedStandardContains(searchText)
-                let searchInDirector = film.director.localizedStandardContains(searchText)
-                
-                guard searchInTitle || searchInOriginalTitle || searchInDescription || searchInDirector else {
-                    return false
-                }
-            }
-            
-            return true
-        }
-    }
-    
+
     var featuredFilms: [Film] {
         films.sorted(by: { $0.rtScore > $1.rtScore }).prefix(5).map { $0 }
     }
@@ -64,10 +46,6 @@ final class FilmsViewModel {
             showError = true
             state = .empty
         }
-    }
-    
-    func clearSearch() {
-        searchText = ""
     }
 }
 
