@@ -6,21 +6,22 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
     @Environment(FilmsViewModel.self) private var filmVM
-    
+
     var body: some View {
         TabView {
-            
+
             Tab("Films", systemImage: "film.stack") {
                 FilmsListView()
             }
-            
+
             Tab("Search", systemImage: "magnifyingglass", role: .search) {
                 SearchView()
             }
-            
+
             Tab("Wiki", systemImage: "books.vertical.fill") {
                 WikiView()
             }
@@ -28,22 +29,21 @@ struct ContentView: View {
              Tab("Favorites", systemImage: "heart.fill") {
              FavoritesView()
              }
-             
+
              Tab("Search", systemImage: "magnifyingglass", role: .search) {
              SearchView()
              }
-             
+
              Tab("Profile", systemImage: "person.fill") {
              ProfileView()
              }*/
         }
         .tabBarMinimizeBehavior(.onScrollDown)
-        .task(priority: .high) {
-            await filmVM.getFilms()
-        }
     }
 }
 
 #Preview {
-    ContentView().environment(FilmsViewModel())
+    ContentView()
+        .environment(FilmsViewModel())
+        .modelContainer(for: Film.self)
 }

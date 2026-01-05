@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 enum ViewState {
     case loading
@@ -15,36 +16,20 @@ enum ViewState {
 
 @Observable
 final class FilmsViewModel {
-    let repository: NetworkRepository
-    
-    var films: [Film] = []
-    var state: ViewState = .loading
     var showError: Bool = false
     var errorMsg: String = ""
 
-    var featuredFilms: [Film] {
-        films.sorted(by: { $0.rtScore > $1.rtScore }).prefix(5).map { $0 }
-    }
-    
-    init(repository: NetworkRepository = Network()) {
-        self.repository = repository
-    }
-    
+    init() {}
+
+    /// Refresh data from API and sync with SwiftData
     @MainActor
-    func getFilms() async {
-        
-        guard films.isEmpty else { return }
-        
-        state = .loading
-        
+    func refreshFilms(modelContext: ModelContext) async {
+        let dataContainer = DataContainer(modelContainer: modelContext.container)
         do {
-            let fetchedFilms = try await repository.getFilms()
-            films = fetchedFilms
-            state = fetchedFilms.isEmpty ? .empty : .loaded
+            try await dataContainer.loadInitialData()
         } catch {
-            errorMsg = "Error loading films: \(error.localizedDescription)"
+            errorMsg = "Error refreshing films: \(error.localizedDescription)"
             showError = true
-            state = .empty
         }
     }
 }

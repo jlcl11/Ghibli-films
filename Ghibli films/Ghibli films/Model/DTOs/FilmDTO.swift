@@ -68,7 +68,7 @@ extension FilmDTO {
             originalTitle: originalTitle,
             image: URL(string: image),
             movieBanner: URL(string: movieBanner),
-            description: description,
+            filmDescription: description,
             director: director,
             producer: producer,
             releaseDate: releaseDate,
