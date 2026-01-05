@@ -21,10 +21,10 @@ struct ContentView: View {
                 SearchView()
             }
             
-            /*  Tab("Wiki", systemImage: "books.vertical.fill") {
-             WikiView()
-             }
-             
+            Tab("Wiki", systemImage: "books.vertical.fill") {
+                WikiView()
+            }
+            /*
              Tab("Favorites", systemImage: "heart.fill") {
              FavoritesView()
              }

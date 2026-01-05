@@ -24,8 +24,8 @@ struct FilmDetail: View {
             } else {
                 Rectangle()
                     .foregroundStyle(.gray)
-                    .aspectRatio(contentMode: .fill)
-                   
+                    .aspectRatio(16/9, contentMode: .fit)
+                    .frame(maxHeight: 300)
             }
             
             //MARK: Info
