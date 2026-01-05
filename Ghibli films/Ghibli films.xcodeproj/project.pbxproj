@@ -6,17 +6,22 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C8C66A522F0BB59700A242F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8C66A4E2F0BB59700A242F3 /* Assets.xcassets */; };
+		C8C66A532F0BB59700A242F3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C66A4F2F0BB59700A242F3 /* ContentView.swift */; };
+		C8C66A542F0BB59700A242F3 /* Ghibli_filmsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C66A502F0BB59700A242F3 /* Ghibli_filmsApp.swift */; };
+		C8C66A5A2F0BB78200A242F3 /* FilmDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C66A592F0BB78200A242F3 /* FilmDTO.swift */; };
+		C8C66A5C2F0BB79000A242F3 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C66A5B2F0BB79000A242F3 /* Film.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		C8C66A402F0BB4EE00A242F3 /* Ghibli films.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ghibli films.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8C66A4E2F0BB59700A242F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C8C66A4F2F0BB59700A242F3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C8C66A502F0BB59700A242F3 /* Ghibli_filmsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ghibli_filmsApp.swift; sourceTree = "<group>"; };
+		C8C66A592F0BB78200A242F3 /* FilmDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDTO.swift; sourceTree = "<group>"; };
+		C8C66A5B2F0BB79000A242F3 /* Film.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		C8C66A422F0BB4EE00A242F3 /* Ghibli films */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Ghibli films";
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		C8C66A3D2F0BB4EE00A242F3 /* Frameworks */ = {
@@ -32,7 +37,7 @@
 		C8C66A372F0BB4EE00A242F3 = {
 			isa = PBXGroup;
 			children = (
-				C8C66A422F0BB4EE00A242F3 /* Ghibli films */,
+				C8C66A512F0BB59700A242F3 /* Ghibli films */,
 				C8C66A412F0BB4EE00A242F3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +48,50 @@
 				C8C66A402F0BB4EE00A242F3 /* Ghibli films.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C8C66A512F0BB59700A242F3 /* Ghibli films */ = {
+			isa = PBXGroup;
+			children = (
+				C8C66A572F0BB6BA00A242F3 /* Model */,
+				C8C66A562F0BB60200A242F3 /* Views */,
+				C8C66A552F0BB5AD00A242F3 /* System */,
+				C8C66A4E2F0BB59700A242F3 /* Assets.xcassets */,
+			);
+			path = "Ghibli films";
+			sourceTree = "<group>";
+		};
+		C8C66A552F0BB5AD00A242F3 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				C8C66A502F0BB59700A242F3 /* Ghibli_filmsApp.swift */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
+		C8C66A562F0BB60200A242F3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C8C66A4F2F0BB59700A242F3 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C8C66A572F0BB6BA00A242F3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C8C66A582F0BB77500A242F3 /* DTOs */,
+				C8C66A5B2F0BB79000A242F3 /* Film.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C8C66A582F0BB77500A242F3 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				C8C66A592F0BB78200A242F3 /* FilmDTO.swift */,
+			);
+			path = DTOs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,9 +108,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				C8C66A422F0BB4EE00A242F3 /* Ghibli films */,
 			);
 			name = "Ghibli films";
 			packageProductDependencies = (
@@ -109,6 +155,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8C66A522F0BB59700A242F3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +166,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8C66A532F0BB59700A242F3 /* ContentView.swift in Sources */,
+				C8C66A5C2F0BB79000A242F3 /* Film.swift in Sources */,
+				C8C66A5A2F0BB78200A242F3 /* FilmDTO.swift in Sources */,
+				C8C66A542F0BB59700A242F3 /* Ghibli_filmsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
