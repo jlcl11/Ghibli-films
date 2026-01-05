@@ -13,10 +13,8 @@ struct FilmList: View {
     
     var body: some View {
         ForEach(films) { film in
-            NavigationLink(value: film) {
-                FilmRow(film: film, isSwipable: isSwipeable)
-            }
-            .buttonStyle(.plain)
+            FilmRow(film: film, isSwipable: isSwipeable)
+                .buttonStyle(.plain)
         }    }
 }
 

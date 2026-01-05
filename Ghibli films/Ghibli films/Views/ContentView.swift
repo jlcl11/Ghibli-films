@@ -17,6 +17,10 @@ struct ContentView: View {
                 FilmsListView()
             }
             
+            Tab("Search", systemImage: "magnifyingglass", role: .search) {
+                SearchView()
+            }
+            
             /*  Tab("Wiki", systemImage: "books.vertical.fill") {
              WikiView()
              }
@@ -33,6 +37,7 @@ struct ContentView: View {
              ProfileView()
              }*/
         }
+        .tabBarMinimizeBehavior(.onScrollDown)
         .task(priority: .high) {
             await filmVM.getFilms()
         }
