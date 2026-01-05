@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C8878D942F0C373E00DA272C /* SavedFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8878D932F0C373E00DA272C /* SavedFilter.swift */; };
+		C8878D962F0C3A3600DA272C /* FilmDetailComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8878D952F0C3A3600DA272C /* FilmDetailComponents.swift */; };
 		C8C66A522F0BB59700A242F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8C66A4E2F0BB59700A242F3 /* Assets.xcassets */; };
 		C8C66A532F0BB59700A242F3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C66A4F2F0BB59700A242F3 /* ContentView.swift */; };
 		C8C66A542F0BB59700A242F3 /* Ghibli_filmsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C66A502F0BB59700A242F3 /* Ghibli_filmsApp.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		C8878D932F0C373E00DA272C /* SavedFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedFilter.swift; sourceTree = "<group>"; };
+		C8878D952F0C3A3600DA272C /* FilmDetailComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailComponents.swift; sourceTree = "<group>"; };
 		C8C66A402F0BB4EE00A242F3 /* Ghibli films.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ghibli films.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8C66A4E2F0BB59700A242F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8C66A4F2F0BB59700A242F3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			children = (
 				C8878D932F0C373E00DA272C /* SavedFilter.swift */,
 				C8C66A782F0BC05B00A242F3 /* UIImage.swift */,
+				C8878D952F0C3A3600DA272C /* FilmDetailComponents.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				C8C66A8D2F0C026200A242F3 /* DataContainer.swift in Sources */,
 				C8878D942F0C373E00DA272C /* SavedFilter.swift in Sources */,
 				C8C66A7F2F0BD6D500A242F3 /* FilmList.swift in Sources */,
+				C8878D962F0C3A3600DA272C /* FilmDetailComponents.swift in Sources */,
 				C8C66A7B2F0BCFAE00A242F3 /* FeaturedFilmCard.swift in Sources */,
 				C8C66A682F0BB87600A242F3 /* URL.swift in Sources */,
 				C8C66A6D2F0BBA6200A242F3 /* FilmViewModel.swift in Sources */,
