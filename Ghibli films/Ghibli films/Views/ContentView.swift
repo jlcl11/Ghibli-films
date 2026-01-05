@@ -26,7 +26,7 @@ struct ContentView: View {
                 WikiView()
             }
             
-            Tab("Favorites", systemImage: "heart.fill") {
+            Tab("Saved", systemImage: "bookmark.fill") {
                 FavoritesFilm()
             }
             
