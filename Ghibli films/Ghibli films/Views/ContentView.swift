@@ -30,11 +30,9 @@ struct ContentView: View {
                 FavoritesFilm()
             }
             
-            
-            /*
              Tab("Profile", systemImage: "person.fill") {
              ProfileView()
-             }*/
+             }
         }
         .tabBarMinimizeBehavior(.onScrollDown)
     }
