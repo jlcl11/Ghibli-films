@@ -9,25 +9,30 @@ import SwiftUI
 import SwiftData
 
 struct ProfileView: View {
+    @Environment(\.modelContext) private var modelContext
+
     @Query(filter: #Predicate<Film> { $0.isFavorite == true }) private var favoriteFilms: [Film]
-    
+
     @Query(filter: #Predicate<Film> { $0.isWatched == true }) private var watchedFilms: [Film]
-    
+
+    @Query private var userProfile: [Profile]
+
     @State private var selectedGradient: ProfileGradient = .sunset
-    
+    @State private var searchVM = SearchVM()
     @State private var showProfileImageSheet = false
-    
     @State private var selectedEmoji: String = "😀"
-    
     @State private var username: String = ""
-    
+    @State private var selectedFilm: Film?
+
+    @Query private var films: [Film]
+
     var body: some View {
         NavigationStack {
             Form {
                 Section("Personal Info") {
                     VStack(alignment: .center) {
                         Button {
-                            showProfileImageSheet = true
+                            showProfileImageSheet.toggle()
                         } label: {
                             ZStack {
                                 Circle()
@@ -46,13 +51,22 @@ struct ProfileView: View {
                             text: $username
                         )
                         .textInputAutocapitalization(.words)
-                        
-                        TextField(
-                            "Username",
-                            text: $username
+                        .padding()
+                        .onChange(of: username) { _, newValue in
+                            Task {
+                                let container = ProfileDataContainer(modelContainer: modelContext.container)
+                                try? await container.updateUserName(newValue)
+                            }
+                        }
+
+                        Divider()
+
+                        FilmSearchField(
+                            searchText: $searchVM.searchText,
+                            selectedFilm: $selectedFilm,
+                            films: films
                         )
-                        .textInputAutocapitalization(.words)
-                        
+
                     }
                 }
                 Section("Saved") {
@@ -64,7 +78,7 @@ struct ProfileView: View {
                         emptyStateIcon: "heart.slash",
                         emptyStateMessage: "Add films to favorites to see them here"
                     )
-                    
+
                     FilmCategoryRow(
                         films: watchedFilms,
                         title: "Watched Films",
@@ -74,8 +88,35 @@ struct ProfileView: View {
                         emptyStateMessage: "Mark films as watched to see them here"
                     )
                 }
-                
+
             }
+            .onAppear {
+                loadProfileData()
+            }
+            .onChange(of: userProfile) { _, _ in
+                loadProfileData()
+            }
+            .navigationTitle("Profile")
+            .sheet(isPresented: $showProfileImageSheet) {
+                ProfileImagePicker(
+                    selectedEmoji: $selectedEmoji,
+                    selectedGradient: $selectedGradient
+                )
+            }
+        }
+    }
+
+    private func loadProfileData() {
+        guard let profile = userProfile.first else { return }
+        username = profile.userName
+        selectedEmoji = profile.selectedEmoji
+        if let gradient = ProfileGradient(rawValue: profile.selectedGradient) {
+            selectedGradient = gradient
+        }
+        if let favFilmID = profile.favFilm {
+            selectedFilm = films.first { $0.id == favFilmID }
+        } else {
+            selectedFilm = nil
         }
     }
 }
