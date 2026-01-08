@@ -17,16 +17,25 @@ struct Ghibli_filmsApp: App {
             ContentView()
                 .environment(filmVM)
         }
-        .modelContainer(for: Film.self) { result in
+        .modelContainer(for: [Film.self, Profile.self]) { result in
             guard case .success(let container) = result else {
                 return
             }
             Task.detached(priority: .high) {
-                let modelContainer = DataContainer(modelContainer: container)
+                // Initialize Films
+                let dataContainer = DataContainer(modelContainer: container)
                 do {
-                    try await modelContainer.loadInitialData()
+                    try await dataContainer.loadInitialData()
                 } catch {
                     print("Error loading initial data: \(error)")
+                }
+
+                // Initialize Profile
+                let profileContainer = ProfileDataContainer(modelContainer: container)
+                do {
+                    try await profileContainer.ensureProfileExists()
+                } catch {
+                    print("Error initializing profile: \(error)")
                 }
             }
         }
