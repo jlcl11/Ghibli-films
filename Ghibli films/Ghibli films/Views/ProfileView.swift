@@ -15,70 +15,64 @@ struct ProfileView: View {
     
     @State private var selectedGradient: ProfileGradient = .sunset
     
+    @State private var showProfileImageSheet = false
+    
     @State private var selectedEmoji: String = "😀"
+    
+    @State private var username: String = ""
     
     var body: some View {
         NavigationStack {
             Form {
                 Section("Personal Info") {
-                    Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+                    VStack(alignment: .center) {
+                        Button {
+                            showProfileImageSheet = true
+                        } label: {
+                            ZStack {
+                                Circle()
+                                    .fill(selectedGradient.gradient)
+                                    .frame(width: 100, height: 100)
+                                
+                                Text(selectedEmoji)
+                                    .font(.system(size: 50))
+                            }
+                            .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 4)
+                        }
+                        Divider()
+                        
+                        TextField(
+                            "Username",
+                            text: $username
+                        )
+                        .textInputAutocapitalization(.words)
+                        
+                        TextField(
+                            "Username",
+                            text: $username
+                        )
+                        .textInputAutocapitalization(.words)
+                        
+                    }
                 }
-                
                 Section("Saved") {
-                    NavigationLink {
-                        FilmsGridView(
-                            films: favoriteFilms,
-                            title: "Favorite Films",
-                            emptyStateIcon: "heart.slash",
-                            emptyStateMessage: "Add films to favorites to see them here")
-                        
-                    } label: {
-                        VStack {
-                            HStack{
-                                Label("Favorite Films", systemImage: "heart.fill")
-                                    .foregroundStyle(.red)
-                                    .fontWeight(.semibold)
-                                Spacer()
-                                Text("\(favoriteFilms.count)")
-                            }
-                            
-                            ScrollView(.horizontal) {
-                                LazyHStack {
-                                    ForEach(favoriteFilms) {film in
-                                        CachedFilmCard(film: film)
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    FilmCategoryRow(
+                        films: favoriteFilms,
+                        title: "Favorite Films",
+                        icon: "heart.fill",
+                        iconColor: .red,
+                        emptyStateIcon: "heart.slash",
+                        emptyStateMessage: "Add films to favorites to see them here"
+                    )
                     
-                    NavigationLink {
-                        FilmsGridView(
-                            films: watchedFilms,
-                            title: "Watched Films",
-                            emptyStateIcon: "eye.slash",
-                            emptyStateMessage: "Add films to favorites to see them here")
-                        
-                    } label: {
-                        VStack {
-                            HStack{
-                                Label("Watched Films", systemImage: "eye.fill")
-                                    .foregroundStyle(.blue)
-                                    .fontWeight(.semibold)
-                                Spacer()
-                                Text("\(watchedFilms.count)")
-                            }
-                            
-                            ScrollView(.horizontal) {
-                                LazyHStack {
-                                    ForEach(watchedFilms) {film in
-                                        CachedFilmCard(film: film)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    
+                    FilmCategoryRow(
+                        films: watchedFilms,
+                        title: "Watched Films",
+                        icon: "eye.fill",
+                        iconColor: .blue,
+                        emptyStateIcon: "eye.slash",
+                        emptyStateMessage: "Mark films as watched to see them here"
+                    )
                 }
                 
             }
@@ -89,3 +83,5 @@ struct ProfileView: View {
 #Preview {
     ProfileView()
 }
+
+
