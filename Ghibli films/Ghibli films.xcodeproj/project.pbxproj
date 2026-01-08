@@ -14,6 +14,7 @@
 		C8BE16402F0E7F1F00CC1920 /* ProfileImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE163F2F0E7F1F00CC1920 /* ProfileImagePicker.swift */; };
 		C8BE16422F0EAA8900CC1920 /* FilmsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE16412F0EAA8900CC1920 /* FilmsGridView.swift */; };
 		C8BE16442F0EB46D00CC1920 /* CachedFilmCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE16432F0EB46D00CC1920 /* CachedFilmCard.swift */; };
+		C8BE16482F0FC48B00CC1920 /* FilmCategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE16472F0FC48B00CC1920 /* FilmCategoryRow.swift */; };
 		C8C66A522F0BB59700A242F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8C66A4E2F0BB59700A242F3 /* Assets.xcassets */; };
 		C8C66A532F0BB59700A242F3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C66A4F2F0BB59700A242F3 /* ContentView.swift */; };
 		C8C66A542F0BB59700A242F3 /* Ghibli_filmsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C66A502F0BB59700A242F3 /* Ghibli_filmsApp.swift */; };
@@ -49,6 +50,7 @@
 		C8BE163F2F0E7F1F00CC1920 /* ProfileImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImagePicker.swift; sourceTree = "<group>"; };
 		C8BE16412F0EAA8900CC1920 /* FilmsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsGridView.swift; sourceTree = "<group>"; };
 		C8BE16432F0EB46D00CC1920 /* CachedFilmCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedFilmCard.swift; sourceTree = "<group>"; };
+		C8BE16472F0FC48B00CC1920 /* FilmCategoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCategoryRow.swift; sourceTree = "<group>"; };
 		C8C66A402F0BB4EE00A242F3 /* Ghibli films.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ghibli films.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8C66A4E2F0BB59700A242F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8C66A4F2F0BB59700A242F3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				C8C66A7C2F0BD19A00A242F3 /* FilmsCarrousel.swift */,
 				C8C66A7E2F0BD6D500A242F3 /* FilmList.swift */,
 				C8BE163F2F0E7F1F00CC1920 /* ProfileImagePicker.swift */,
+				C8BE16472F0FC48B00CC1920 /* FilmCategoryRow.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				C8C66A832F0BE57700A242F3 /* SearchVm.swift in Sources */,
 				C8C66A672F0BB87600A242F3 /* NetworkInteractor.swift in Sources */,
 				C8C66A742F0BBF2E00A242F3 /* FilmRow.swift in Sources */,
+				C8BE16482F0FC48B00CC1920 /* FilmCategoryRow.swift in Sources */,
 				C8C66A8D2F0C026200A242F3 /* DataContainer.swift in Sources */,
 				C8878D942F0C373E00DA272C /* SavedFilter.swift in Sources */,
 				C8C66A7F2F0BD6D500A242F3 /* FilmList.swift in Sources */,
