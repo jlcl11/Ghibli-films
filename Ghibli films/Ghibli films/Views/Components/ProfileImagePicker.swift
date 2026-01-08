@@ -26,15 +26,9 @@ struct ProfileImagePicker: View {
                         .font(.headline)
                         .foregroundStyle(.secondary)
 
-                    ZStack {
-                        Circle()
-                            .fill(tempGradient.gradient)
-                            .frame(width: 120, height: 120)
-
-                        Text(tempEmoji)
-                            .font(.system(size: 60))
-                    }
-                    .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 4)
+                    Text(tempEmoji)
+                        .font(.system(size: 60))
+                        .profileAvatarStyle(gradient: tempGradient.gradient, size: 120)
                 }
                 .padding(.top, 20)
 
@@ -53,14 +47,8 @@ struct ProfileImagePicker: View {
                                     Circle()
                                         .fill(gradient.gradient)
                                         .frame(width: 60, height: 60)
-                                        .overlay(
-                                            Circle()
-                                                .strokeBorder(
-                                                    tempGradient == gradient ? Color.blue : Color.clear,
-                                                    lineWidth: 3
-                                                )
-                                        )
-                                        .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
+                                        .circleSelectionIndicator(isSelected: tempGradient == gradient)
+                                        .smallShadow()
                                 }
                             }
                         }
@@ -88,13 +76,7 @@ struct ProfileImagePicker: View {
                                     Text(emoji)
                                         .font(.system(size: 36))
                                         .frame(width: 50, height: 50)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .strokeBorder(
-                                                    tempEmoji == emoji ? Color.blue : Color.clear,
-                                                    lineWidth: 2
-                                                )
-                                        )
+                                        .rectangleSelectionIndicator(isSelected: tempEmoji == emoji)
                                 }
                             }
                         }

@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct FilmsCarrousel: View {
-    
+
     let featuredFilms: [Film]
-    
+
     var body: some View {
-        
+
         ScrollView(.horizontal) {
             LazyHStack(spacing: 12) {
                 ForEach(featuredFilms) { film in
@@ -24,15 +24,9 @@ struct FilmsCarrousel: View {
             }
             .scrollTargetLayout()
         }
-        .scrollTargetBehavior(.viewAligned)
-        .scrollClipDisabled()
-        .contentMargins(.horizontal, 5, for: .scrollContent)
-        .defaultScrollAnchor(.leading)
-        .scrollIndicators(.hidden)
-        .frame(height: 180)
-        .listRowInsets(EdgeInsets())
-        .listRowBackground(Color.clear)
-        
+        .carouselScrollStyle()
+        .clearListRowStyle()
+
     }
 }
 

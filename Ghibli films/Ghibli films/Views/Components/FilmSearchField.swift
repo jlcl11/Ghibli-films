@@ -27,7 +27,6 @@ struct FilmSearchField: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             if let film = selectedFilm {
-                // Show selected film
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
                         Text(film.title)
@@ -35,8 +34,7 @@ struct FilmSearchField: View {
                             .fontWeight(.medium)
 
                         Text(film.originalTitle)
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+                            .secondaryTextStyle()
                     }
 
                     Spacer()
@@ -54,11 +52,8 @@ struct FilmSearchField: View {
                     }
                     .buttonStyle(.plain)
                 }
-                .padding()
-                .background(Color.gray.opacity(0.1))
-                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .cardBackground()
             } else {
-                // Show search field
                 HStack {
                     Image(systemName: "magnifyingglass")
                         .foregroundStyle(.gray)
@@ -66,11 +61,8 @@ struct FilmSearchField: View {
                     TextField("Add your favorite film", text: $searchText)
                         .textFieldStyle(.plain)
                 }
-                .padding()
-                .background(Color.gray.opacity(0.1))
-                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .cardBackground()
 
-                // Show filtered results - automatically when typing
                 if !filteredFilms.isEmpty {
                     VStack(alignment: .leading, spacing: 0) {
                         ForEach(Array(filteredFilms.prefix(5))) { film in
@@ -88,8 +80,7 @@ struct FilmSearchField: View {
                                         .foregroundStyle(.primary)
 
                                     Text(film.originalTitle)
-                                        .font(.caption)
-                                        .foregroundStyle(.secondary)
+                                        .secondaryTextStyle()
                                 }
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding(.vertical, 12)
@@ -102,9 +93,7 @@ struct FilmSearchField: View {
                             }
                         }
                     }
-                    .background(Color(UIColor.systemBackground))
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 4)
+                    .dropdownCardStyle()
                 }
             }
         }
@@ -120,11 +109,6 @@ struct FilmSearchField: View {
         )
         .padding()
 
-        FilmSearchField(
-            searchText: .constant(""),
-            selectedFilm: .constant(.mock),
-            films: [.mock]
-        )
-        .padding()
+        
     }
 }

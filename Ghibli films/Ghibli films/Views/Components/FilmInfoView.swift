@@ -16,29 +16,22 @@ struct FilmInfoView: View {
                 .font(.headline)
 
             Text(film.originalTitle)
-                .font(.caption)
-                .foregroundStyle(.secondary)
+                .secondaryTextStyle()
 
             VStack(alignment: .leading, spacing: 2) {
                 Label(film.director, systemImage: "film")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .secondaryTextStyle()
 
                 Label(film.producer, systemImage: "person.fill")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .secondaryTextStyle()
             }
             .padding(.top, 2)
 
             HStack(spacing: 8) {
                 Label(film.releaseDate, systemImage: "calendar")
-                    .font(.caption2)
-                    .foregroundStyle(.tertiary)
-
                 Label("\(film.runningTime) min", systemImage: "clock")
-                    .font(.caption2)
-                    .foregroundStyle(.tertiary)
             }
+            .tertiaryTextStyle()
 
             HStack(spacing: 4) {
                 Image(systemName: "star.fill")
