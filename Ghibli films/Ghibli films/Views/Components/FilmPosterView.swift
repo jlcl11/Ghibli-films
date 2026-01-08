@@ -16,32 +16,20 @@ struct FilmPosterView: View {
             if let image {
                 Image(uiImage: image)
                     .resizable()
-                    .scaledToFill()
-                    .frame(width: 80, height: 120)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
+                    .posterStyle()
             } else {
                 ProgressView()
                     .frame(width: 80, height: 120)
             }
 
-            // Visual indicators for watched/favorite
             HStack(spacing: 4) {
                 if film.isWatched {
                     Image(systemName: "eye.fill")
-                        .font(.caption2)
-                        .foregroundStyle(.white)
-                        .padding(4)
-                        .background(.blue.opacity(0.8))
-                        .clipShape(Circle())
+                        .badgeStyle(color: .blue)
                 }
                 if film.isFavorite {
                     Image(systemName: "heart.fill")
-                        .font(.caption2)
-                        .foregroundStyle(.white)
-                        .padding(4)
-                        .background(.red.opacity(0.8))
-                        .clipShape(Circle())
+                        .badgeStyle(color: .red)
                 }
             }
             .padding(4)

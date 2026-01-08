@@ -16,10 +16,7 @@ struct CachedFilmCard: View {
             if let image = image {
                 Image(uiImage: image)
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 100, height: 150)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
+                    .posterStyle(width: 100, height: 150)
             } else {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(.gray.opacity(0.2))

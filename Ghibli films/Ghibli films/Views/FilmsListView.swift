@@ -31,18 +31,14 @@ struct FilmsListView: View {
                         FilmsCarrousel(featuredFilms: featuredFilms)
                     } header: {
                         Text("Top Rated")
-                            .font(.headline)
-                            .foregroundStyle(.primary)
-                            .textCase(nil)
+                            .sectionHeaderStyle()
                     }
 
                     Section {
                         FilmList(films: films)
                     } header: {
                         Text("All Films")
-                            .font(.headline)
-                            .foregroundStyle(.primary)
-                            .textCase(nil)
+                            .sectionHeaderStyle()
                     }
                 }
                 .listStyle(.plain)

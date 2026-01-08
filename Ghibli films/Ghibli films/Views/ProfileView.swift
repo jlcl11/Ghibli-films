@@ -34,15 +34,9 @@ struct ProfileView: View {
                         Button {
                             showProfileImageSheet.toggle()
                         } label: {
-                            ZStack {
-                                Circle()
-                                    .fill(selectedGradient.gradient)
-                                    .frame(width: 100, height: 100)
-                                
-                                Text(selectedEmoji)
-                                    .font(.system(size: 50))
-                            }
-                            .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 4)
+                            Text(selectedEmoji)
+                                .font(.system(size: 50))
+                                .profileAvatarStyle(gradient: selectedGradient.gradient)
                         }
                         Divider()
                         

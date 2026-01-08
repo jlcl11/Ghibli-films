@@ -60,10 +60,7 @@ private extension FilmRow {
                 if let image {
                     Image(uiImage: image)
                         .resizable()
-                        .scaledToFill()
-                        .frame(width: 80, height: 120)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
+                        .posterStyle()
                 } else {
                     ProgressView()
                         .frame(width: 80, height: 120)
@@ -96,11 +93,7 @@ private extension FilmRow {
 
         var body: some View {
             Image(systemName: icon)
-                .font(.caption2)
-                .foregroundStyle(.white)
-                .padding(4)
-                .background(color.opacity(0.8))
-                .clipShape(Circle())
+                .badgeStyle(color: color)
         }
     }
 
@@ -113,8 +106,7 @@ private extension FilmRow {
                     .font(.headline)
 
                 Text(film.originalTitle)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .secondaryTextStyle()
 
                 CreditsView(director: film.director, producer: film.producer)
                 MetadataView(releaseDate: film.releaseDate, runningTime: film.runningTime)
@@ -130,12 +122,10 @@ private extension FilmRow {
         var body: some View {
             VStack(alignment: .leading, spacing: 2) {
                 Label(director, systemImage: "film")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .secondaryTextStyle()
 
                 Label(producer, systemImage: "person.fill")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .secondaryTextStyle()
             }
             .padding(.top, 2)
         }
@@ -150,8 +140,7 @@ private extension FilmRow {
                 Label(releaseDate, systemImage: "calendar")
                 Label("\(runningTime) min", systemImage: "clock")
             }
-            .font(.caption2)
-            .foregroundStyle(.tertiary)
+            .tertiaryTextStyle()
         }
     }
 
