@@ -23,8 +23,9 @@ struct ProfileImagePicker: View {
                 PreviewSection(emoji: tempEmoji, gradient: tempGradient)
                 GradientPicker(selectedGradient: $tempGradient)
                 EmojiPicker(selectedEmoji: $tempEmoji)
-                Spacer()
             }
+            .safeAreaPadding(.bottom)
+            .ignoresSafeArea(edges: .bottom)
             .onAppear {
                 tempEmoji = selectedEmoji
                 tempGradient = selectedGradient

@@ -21,17 +21,23 @@ struct FilmDetail: View {
         }
         .ignoresSafeArea()
         .toolbar {
-            ToolbarItemGroup(placement: .bottomBar) {
-                Button(action: {}) {
+            ToolbarItemGroup() {
+                Button {
+                    let container = DataContainer(modelContainer: modelContext.container)
+                    Task {
+                        try? await container.toggleWatched(filmID: film.id)
+                    }
+                } label: {
                     Label("Watched", systemImage: film.isWatched ? "eye.fill" : "eye")
-                        .symbolRenderingMode(.palette)
-                        .foregroundStyle(film.isWatched ? .blue : .secondary, .primary)
                 }
-                
-                Button(action: {}) {
+
+                Button {
+                    let container = DataContainer(modelContainer: modelContext.container)
+                    Task {
+                        try? await container.toggleFavorite(filmID: film.id)
+                    }
+                } label: {
                     Label("Favorite", systemImage: film.isFavorite ? "heart.fill" : "heart")
-                        .symbolRenderingMode(.palette)
-                        .foregroundStyle(film.isFavorite ? .red : .secondary, .primary)
                 }
             }
         }
