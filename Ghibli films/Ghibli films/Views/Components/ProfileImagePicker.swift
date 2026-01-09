@@ -20,70 +20,9 @@ struct ProfileImagePicker: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 24) {
-                // Preview Section
-                VStack(spacing: 16) {
-                    Text("Preview")
-                        .font(.headline)
-                        .foregroundStyle(.secondary)
-
-                    Text(tempEmoji)
-                        .font(.system(size: 60))
-                        .profileAvatarStyle(gradient: tempGradient.gradient, size: 120)
-                }
-                .padding(.top, 20)
-
-                // Background Gradient Section
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Background")
-                        .font(.headline)
-                        .padding(.horizontal)
-
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 16) {
-                            ForEach(ProfileGradient.allCases) { gradient in
-                                Button {
-                                    tempGradient = gradient
-                                } label: {
-                                    Circle()
-                                        .fill(gradient.gradient)
-                                        .frame(width: 60, height: 60)
-                                        .circleSelectionIndicator(isSelected: tempGradient == gradient)
-                                        .smallShadow()
-                                }
-                            }
-                        }
-                        .padding(.horizontal)
-                    }
-                }
-
-                // Emoji Section
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Emoji")
-                        .font(.headline)
-                        .padding(.horizontal)
-
-                    ScrollView {
-                        LazyVGrid(
-                            columns: [
-                                GridItem(.adaptive(minimum: 50, maximum: 60), spacing: 12)
-                            ],
-                            spacing: 12
-                        ) {
-                            ForEach(ProfileEmoji.allEmojis, id: \.self) { emoji in
-                                Button {
-                                    tempEmoji = emoji
-                                } label: {
-                                    Text(emoji)
-                                        .font(.system(size: 36))
-                                        .frame(width: 50, height: 50)
-                                        .rectangleSelectionIndicator(isSelected: tempEmoji == emoji)
-                                }
-                            }
-                        }
-                        .padding(.horizontal)
-                    }
-                }
-
+                PreviewSection(emoji: tempEmoji, gradient: tempGradient)
+                GradientPicker(selectedGradient: $tempGradient)
+                EmojiPicker(selectedEmoji: $tempEmoji)
                 Spacer()
             }
             .onAppear {

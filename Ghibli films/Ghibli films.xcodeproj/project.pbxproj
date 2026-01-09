@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C8F1ABC12F10300000000001 /* FilmRowComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F1ABC02F10300000000001 /* FilmRowComponents.swift */; };
+		C8F1ABC32F10300000000002 /* ProfileImagePickerComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F1ABC22F10300000000002 /* ProfileImagePickerComponents.swift */; };
+		C8F1ABC52F10300000000003 /* FilmSearchFieldComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F1ABC42F10300000000003 /* FilmSearchFieldComponents.swift */; };
 		C8878D942F0C373E00DA272C /* SavedFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8878D932F0C373E00DA272C /* SavedFilter.swift */; };
 		C8878D962F0C3A3600DA272C /* FilmDetailComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8878D952F0C3A3600DA272C /* FilmDetailComponents.swift */; };
 		C891ABC92F102020005CAEF4 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C891ABC82F102020005CAEF4 /* Styles.swift */; };
@@ -48,6 +51,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C8F1ABC02F10300000000001 /* FilmRowComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmRowComponents.swift; sourceTree = "<group>"; };
+		C8F1ABC22F10300000000002 /* ProfileImagePickerComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImagePickerComponents.swift; sourceTree = "<group>"; };
+		C8F1ABC42F10300000000003 /* FilmSearchFieldComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmSearchFieldComponents.swift; sourceTree = "<group>"; };
 		C8878D932F0C373E00DA272C /* SavedFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedFilter.swift; sourceTree = "<group>"; };
 		C8878D952F0C3A3600DA272C /* FilmDetailComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailComponents.swift; sourceTree = "<group>"; };
 		C891ABC82F102020005CAEF4 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
@@ -225,6 +231,9 @@
 				C8878D932F0C373E00DA272C /* SavedFilter.swift */,
 				C8C66A782F0BC05B00A242F3 /* UIImage.swift */,
 				C8878D952F0C3A3600DA272C /* FilmDetailComponents.swift */,
+				C8F1ABC02F10300000000001 /* FilmRowComponents.swift */,
+				C8F1ABC22F10300000000002 /* ProfileImagePickerComponents.swift */,
+				C8F1ABC42F10300000000003 /* FilmSearchFieldComponents.swift */,
 				C8BE163D2F0E7D6A00CC1920 /* ProfileGradient.swift */,
 				C8BE16532F1000AA00CC1920 /* ProfileEmoji.swift */,
 				C891ABC82F102020005CAEF4 /* Styles.swift */,
@@ -337,6 +346,9 @@
 				C8878D942F0C373E00DA272C /* SavedFilter.swift in Sources */,
 				C8C66A7F2F0BD6D500A242F3 /* FilmList.swift in Sources */,
 				C8878D962F0C3A3600DA272C /* FilmDetailComponents.swift in Sources */,
+				C8F1ABC12F10300000000001 /* FilmRowComponents.swift in Sources */,
+				C8F1ABC32F10300000000002 /* ProfileImagePickerComponents.swift in Sources */,
+				C8F1ABC52F10300000000003 /* FilmSearchFieldComponents.swift in Sources */,
 				C8C66A7B2F0BCFAE00A242F3 /* FeaturedFilmCard.swift in Sources */,
 				C8BE16402F0E7F1F00CC1920 /* ProfileImagePicker.swift in Sources */,
 				C8C66A682F0BB87600A242F3 /* URL.swift in Sources */,
