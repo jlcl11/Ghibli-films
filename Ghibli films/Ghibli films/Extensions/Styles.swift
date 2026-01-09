@@ -143,7 +143,7 @@ struct FilmSubtitleStyle: ViewModifier {
 // MARK: - Profile Avatar Modifiers
 
 struct ProfileAvatarStyle: ViewModifier {
-    let gradient: LinearGradient
+    let gradient: MeshGradient
     let size: CGFloat
 
     func body(content: Content) -> some View {
@@ -345,7 +345,7 @@ extension View {
     }
 
     // Profile Avatar
-    func profileAvatarStyle(gradient: LinearGradient, size: CGFloat = 100) -> some View {
+    func profileAvatarStyle(gradient: MeshGradient, size: CGFloat = 100) -> some View {
         modifier(ProfileAvatarStyle(gradient: gradient, size: size))
     }
 
