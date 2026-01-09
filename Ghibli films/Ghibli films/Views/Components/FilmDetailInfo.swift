@@ -20,46 +20,40 @@ struct FilmDetailInfo: View {
             // Original title
             if film.originalTitle != film.title {
                 Text(film.originalTitle)
-                    .font(.body)
-                    .foregroundColor(.secondary)
+                    .metadataLabelStyle()
             }
 
             // Statistics: rating and duration
             HStack(spacing: 16) {
                 HStack(spacing: 4) {
                     Image(systemName: "star.fill")
-                        .foregroundColor(.yellow)
+                        .ratingStarStyle(size: .subheadline)
                     Text("\(film.rtScore)%")
-                        .fontWeight(.semibold)
+                        .ratingScoreStyle(size: .subheadline)
                 }
 
                 HStack(spacing: 4) {
                     Image(systemName: "clock.fill")
                         .foregroundColor(.blue)
                     Text("\(film.runningTime) min")
-                        .fontWeight(.semibold)
+                        .ratingScoreStyle(size: .subheadline)
                 }
             }
-            .font(.subheadline)
 
             // Director
             VStack(alignment: .leading, spacing: 4) {
                 Text("Director")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
+                    .metadataLabelStyle()
                 Text(film.director)
-                    .font(.body)
-                    .fontWeight(.medium)
+                    .metadataValueStyle()
             }
 
             // Producer
             VStack(alignment: .leading, spacing: 4) {
                 Text("Producer")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
+                    .metadataLabelStyle()
                 Text(film.producer)
-                    .font(.body)
-                    .fontWeight(.medium)
+                    .metadataValueStyle()
             }
 
             // Synopsis
@@ -68,15 +62,12 @@ struct FilmDetailInfo: View {
                     .font(.headline)
 
                 Text(film.filmDescription)
-                    .font(.body)
-                    .foregroundColor(.secondary)
-                    .lineSpacing(4)
+                    .descriptionTextStyle()
             }
 
             // Release date
             Text("Release: \(film.releaseDate)")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
+                .metadataLabelStyle()
         }
     }
 }

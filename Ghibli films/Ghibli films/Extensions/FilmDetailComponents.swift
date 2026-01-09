@@ -52,8 +52,7 @@ extension FilmDetail {
 
                if originalTitle != title {
                    Text(originalTitle)
-                       .font(.body)
-                       .foregroundColor(.secondary)
+                       .metadataLabelStyle()
                }
            }
        }
@@ -82,7 +81,7 @@ extension FilmDetail {
                Image(systemName: icon)
                    .foregroundColor(color)
                Text(text)
-                   .fontWeight(.semibold)
+                   .ratingScoreStyle(size: .subheadline)
            }
        }
    }
@@ -106,11 +105,9 @@ extension FilmDetail {
        var body: some View {
            VStack(alignment: .leading, spacing: 4) {
                Text(label)
-                   .font(.subheadline)
-                   .foregroundColor(.secondary)
+                   .metadataLabelStyle()
                Text(name)
-                   .font(.body)
-                   .fontWeight(.medium)
+                   .metadataValueStyle()
            }
        }
    }
@@ -124,9 +121,7 @@ extension FilmDetail {
                    .font(.headline)
 
                Text(description)
-                   .font(.body)
-                   .foregroundColor(.secondary)
-                   .lineSpacing(4)
+                   .descriptionTextStyle()
            }
        }
    }
@@ -136,8 +131,7 @@ extension FilmDetail {
 
        var body: some View {
            Text("Release: \(releaseDate)")
-               .font(.subheadline)
-               .foregroundColor(.secondary)
+               .metadataLabelStyle()
        }
    }
 }

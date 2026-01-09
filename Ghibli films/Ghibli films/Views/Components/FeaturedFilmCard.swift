@@ -31,13 +31,10 @@ struct FeaturedFilmCard: View {
 
                 HStack(spacing: 4) {
                     Image(systemName: "star.fill")
-                        .font(.caption2)
-                        .foregroundStyle(.yellow)
+                        .ratingStarStyle(size: .caption2)
 
                     Text("\(film.rtScore)%")
-                        .font(.caption2)
-                        .fontWeight(.semibold)
-                        .foregroundStyle(.white)
+                        .ratingScoreStyle(size: .caption2, color: .white)
                 }
             }
             .padding(12)

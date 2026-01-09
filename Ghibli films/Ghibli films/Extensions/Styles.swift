@@ -199,6 +199,57 @@ struct FeaturedGradientOverlay: ViewModifier {
     }
 }
 
+// MARK: - Metadata Styling Modifiers
+
+struct MetadataLabelStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.subheadline)
+            .foregroundColor(.secondary)
+    }
+}
+
+struct MetadataValueStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.body)
+            .fontWeight(.medium)
+    }
+}
+
+struct DescriptionTextStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.body)
+            .foregroundColor(.secondary)
+            .lineSpacing(4)
+    }
+}
+
+// MARK: - Rating Styling Modifiers
+
+struct RatingStarStyle: ViewModifier {
+    var size: Font = .caption
+
+    func body(content: Content) -> some View {
+        content
+            .font(size)
+            .foregroundStyle(.yellow)
+    }
+}
+
+struct RatingScoreStyle: ViewModifier {
+    var size: Font = .caption
+    var color: Color = .primary
+
+    func body(content: Content) -> some View {
+        content
+            .font(size)
+            .fontWeight(.semibold)
+            .foregroundStyle(color)
+    }
+}
+
 // MARK: - Selection Indicator Modifiers
 
 struct CircleSelectionIndicator: ViewModifier {
@@ -319,5 +370,27 @@ extension View {
 
     func rectangleSelectionIndicator(isSelected: Bool) -> some View {
         modifier(RectangleSelectionIndicator(isSelected: isSelected))
+    }
+
+    // Metadata Styles
+    func metadataLabelStyle() -> some View {
+        modifier(MetadataLabelStyle())
+    }
+
+    func metadataValueStyle() -> some View {
+        modifier(MetadataValueStyle())
+    }
+
+    func descriptionTextStyle() -> some View {
+        modifier(DescriptionTextStyle())
+    }
+
+    // Rating Styles
+    func ratingStarStyle(size: Font = .caption) -> some View {
+        modifier(RatingStarStyle(size: size))
+    }
+
+    func ratingScoreStyle(size: Font = .caption, color: Color = .primary) -> some View {
+        modifier(RatingScoreStyle(size: size, color: color))
     }
 }
