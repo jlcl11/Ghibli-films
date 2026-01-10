@@ -19,7 +19,14 @@ actor DataContainer {
             try loadFilms(films: films)
         } catch {
             // If network fails, continue with cached data
-            print("Network error: \(error). Using cached data.")
+            print("Network error loading films: \(error). Using cached data.")
+        }
+
+        do {
+            let peopleDTO = try await network.getPeople()
+            try loadPeople(people: peopleDTO.map { $0.toPerson })
+        } catch {
+            print("Network error loading people: \(error). Using cached data.")
         }
     }
 
@@ -95,6 +102,38 @@ actor DataContainer {
                     url: URL(string: filmDTO.url) ?? URL(string: "https://ghibliapi.vercel.app/films")!
                 )
                 modelContext.insert(newFilm)
+            }
+        }
+
+        // Batch save all changes
+        if modelContext.hasChanges {
+            try modelContext.save()
+        }
+    }
+
+    /// Upsert people into SwiftData (insert or update)
+    private func loadPeople(people: [Person]) throws {
+        for person in people {
+            let personID = person.id
+
+            // Check if person already exists
+            var fetchPeople = FetchDescriptor<Person>(predicate: #Predicate { $0.id == personID })
+            fetchPeople.fetchLimit = 1
+            let queryPeople = try modelContext.fetch(fetchPeople)
+
+            if let existingPerson = queryPeople.first {
+                // UPDATE existing person
+                existingPerson.name = person.name
+                existingPerson.gender = person.gender
+                existingPerson.age = person.age
+                existingPerson.eyeColor = person.eyeColor
+                existingPerson.hairColor = person.hairColor
+                existingPerson.films = person.films
+                existingPerson.species = person.species
+                existingPerson.url = person.url
+            } else {
+                // INSERT new person
+                modelContext.insert(person)
             }
         }
 

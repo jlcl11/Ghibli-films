@@ -10,9 +10,8 @@ import Foundation
 protocol NetworkRepository: Sendable, NetworkInteractor {
     func getFilms() async throws(NetworkError) -> [FilmDTO]
     func getFilm(id: Int) async throws(NetworkError) -> FilmDTO
-    /*func getPeople() async throws(NetworkError) -> [Person]
-    func getPerson(id: Int) async throws(NetworkError) -> Person
-    func getSpecies() async throws(NetworkError) -> [Species]
+    func getPeople() async throws(NetworkError) -> [PersonDTO]
+   /* func getSpecies() async throws(NetworkError) -> [Species]
     func getSpeciesItem(id: Int) async throws(NetworkError) -> Species
     func getVehicles() async throws(NetworkError) -> [Vehicle]
     func getVehicle(id: Int) async throws(NetworkError) -> Vehicle
@@ -29,15 +28,11 @@ struct Network: NetworkRepository {
     func getFilm(id: Int) async throws(NetworkError) -> FilmDTO {
         try await getJSON(.get(url: .getById(.films, id: id)), type: FilmDTO.self)
     }
+
+    func getPeople() async throws(NetworkError) -> [PersonDTO] {
+        try await getJSON(.get(url: .getPeople), type: [PersonDTO].self)
+    }
 /*
-    func getPeople() async throws(NetworkError) -> [Person] {
-        try await getJSON(.get(url: .getPeople), type: [PersonDTO].self).map(\.toPerson)
-    }
-
-    func getPerson(id: Int) async throws(NetworkError) -> Person {
-        try await getJSON(.get(url: .getById(.people, id: id)), type: PersonDTO.self).toPerson
-    }
-
     func getSpecies() async throws(NetworkError) -> [Species] {
         try await getJSON(.get(url: .getSpecies), type: [SpeciesDTO].self).map(\.toSpecies)
     }

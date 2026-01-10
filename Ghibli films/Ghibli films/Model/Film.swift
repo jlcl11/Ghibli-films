@@ -23,7 +23,7 @@ final class Film {
     var releaseDate: String
     var runningTime: Int
     var rtScore: Int
-    var people: [URL]
+    @Relationship(deleteRule: .cascade, inverse: \Person.name) var people: [URL]
     var species: [URL]
     var locations: [URL]
     var vehicles: [URL]
