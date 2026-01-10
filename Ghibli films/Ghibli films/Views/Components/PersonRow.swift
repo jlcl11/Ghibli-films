@@ -1,37 +1,11 @@
 //
-//  PeopleListView.swift
+//  PersonRow.swift
 //  Ghibli films
 //
 //  Created by José Luis Corral López on 10/1/26.
 //
 
 import SwiftUI
-import SwiftData
-
-struct PeopleListView: View {
-    @Query private var people: [Person]
-    @Query private var allFilms: [Film]
-
-    var body: some View {
-        if people.isEmpty {
-            ContentUnavailableView(
-                "No Characters Available",
-                systemImage: "person.2",
-                description: Text("Characters will appear here once loaded.")
-            )
-        } else {
-            List(people) { person in
-                NavigationLink {
-                    PersonDetailView(person: person)
-                } label: {
-                    PersonRow(person: person, allFilms: allFilms)
-                }
-            }
-            .listStyle(.plain)
-            .navigationTitle("Characters")
-        }
-    }
-}
 
 struct PersonRow: View {
     let person: Person
@@ -46,8 +20,15 @@ struct PersonRow: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 12) {
-                Image(systemName: "person.fill")
-                    .personAvatarStyle()
+                ZStack {
+                    Circle()
+                        .fill(.blue.opacity(0.15))
+                        .frame(width: 50, height: 50)
+
+                    Image(systemName: "person.fill")
+                        .font(.title2)
+                        .foregroundStyle(.blue)
+                }
 
                 VStack(alignment: .leading, spacing: 4) {
                     Text(person.name)
@@ -56,12 +37,14 @@ struct PersonRow: View {
                     HStack(spacing: 8) {
                         if !person.gender.isEmpty && person.gender != "NA" {
                             Label(person.gender, systemImage: "figure.stand")
-                                .secondaryTextStyle()
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
                         }
 
                         if !person.age.isEmpty && person.age != "NA" {
                             Label(person.age, systemImage: "calendar")
-                                .secondaryTextStyle()
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
                         }
                     }
                 }
@@ -71,7 +54,8 @@ struct PersonRow: View {
 
             if !personFilms.isEmpty {
                 Text("Appears in")
-                    .secondaryTextStyle()
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
 
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack(spacing: 8) {
@@ -87,9 +71,7 @@ struct PersonRow: View {
     }
 }
 
+
 #Preview {
-    NavigationStack {
-        PeopleListView()
-    }
-    .modelContainer(for: [Person.self, Film.self])
+    PersonRow(person: .mock, allFilms: [.mock])
 }
