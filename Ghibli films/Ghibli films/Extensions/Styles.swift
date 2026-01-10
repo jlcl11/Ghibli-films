@@ -157,6 +157,22 @@ struct ProfileAvatarStyle: ViewModifier {
     }
 }
 
+struct PersonAvatarStyle: ViewModifier {
+    var size: CGFloat = 50
+    var color: Color = .blue
+
+    func body(content: Content) -> some View {
+        ZStack {
+            Circle()
+                .fill(color.opacity(0.15))
+                .frame(width: size, height: size)
+            content
+                .font(.title2)
+                .foregroundStyle(color)
+        }
+    }
+}
+
 // MARK: - Scroll Modifiers
 
 struct CarouselScrollStyle: ViewModifier {
@@ -347,6 +363,10 @@ extension View {
     // Profile Avatar
     func profileAvatarStyle(gradient: MeshGradient, size: CGFloat = 100) -> some View {
         modifier(ProfileAvatarStyle(gradient: gradient, size: size))
+    }
+
+    func personAvatarStyle(size: CGFloat = 50, color: Color = .blue) -> some View {
+        modifier(PersonAvatarStyle(size: size, color: color))
     }
 
     // Scroll Styles

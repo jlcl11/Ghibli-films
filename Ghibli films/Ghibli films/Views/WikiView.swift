@@ -31,6 +31,10 @@ struct WikiView: View {
                     WikiCategoryRow(icon: "person.2.fill", title: "Characters", subtitle: "\(people.count) characters", color: .blue, destination: AnyView(PeopleListView()))
                 }
             }
+            .navigationTitle("Wiki")
+            .navigationDestination(for: Film.self) { film in
+                FilmDetail(film: film)
+            }
         }
     }
 }
