@@ -6,10 +6,32 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct WikiView: View {
+    @Query var people: [Person] = []
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            List {
+                Section {
+                    LazyVGrid(
+                        columns: [GridItem(.flexible()), GridItem(.flexible())],
+                        spacing: 12
+                    )  {
+                        StatCard(
+                            icon: "person.2.fill",
+                            value:  people.count,
+                            label: "Characters",
+                            color: .blue
+                        )
+                    }
+                }
+                
+                Section {
+                    WikiCategoryRow(icon: "person.2.fill", title: "Characters", subtitle: "\(people.count) characters", color: .blue, destination: AnyView(PeopleListView()))
+                }
+            }
+        }
     }
 }
 
