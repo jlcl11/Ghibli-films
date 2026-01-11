@@ -27,6 +27,10 @@
 		C89EB4A12F13C15800E759ED /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89EB4A02F13C15800E759ED /* Location.swift */; };
 		C89EB4A32F13C31A00E759ED /* LocationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89EB4A22F13C31A00E759ED /* LocationRow.swift */; };
 		C89EB4A52F13C33700E759ED /* LocationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89EB4A42F13C33700E759ED /* LocationListView.swift */; };
+		C89EB4A72F13C3C700E759ED /* SpeciesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89EB4A62F13C3C700E759ED /* SpeciesDTO.swift */; };
+		C89EB4A92F13C40800E759ED /* Species.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89EB4A82F13C40800E759ED /* Species.swift */; };
+		C89EB4AB2F13C5A300E759ED /* SpeciesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89EB4AA2F13C5A300E759ED /* SpeciesListView.swift */; };
+		C89EB4AD2F13C5B500E759ED /* SpeciesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89EB4AC2F13C5B500E759ED /* SpeciesRow.swift */; };
 		C8BE163C2F0E738C00CC1920 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE163B2F0E738C00CC1920 /* ProfileView.swift */; };
 		C8BE163E2F0E7D6A00CC1920 /* ProfileGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE163D2F0E7D6A00CC1920 /* ProfileGradient.swift */; };
 		C8BE16402F0E7F1F00CC1920 /* ProfileImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE163F2F0E7F1F00CC1920 /* ProfileImagePicker.swift */; };
@@ -88,6 +92,10 @@
 		C89EB4A02F13C15800E759ED /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		C89EB4A22F13C31A00E759ED /* LocationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRow.swift; sourceTree = "<group>"; };
 		C89EB4A42F13C33700E759ED /* LocationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListView.swift; sourceTree = "<group>"; };
+		C89EB4A62F13C3C700E759ED /* SpeciesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesDTO.swift; sourceTree = "<group>"; };
+		C89EB4A82F13C40800E759ED /* Species.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Species.swift; sourceTree = "<group>"; };
+		C89EB4AA2F13C5A300E759ED /* SpeciesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesListView.swift; sourceTree = "<group>"; };
+		C89EB4AC2F13C5B500E759ED /* SpeciesRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesRow.swift; sourceTree = "<group>"; };
 		C8BE163B2F0E738C00CC1920 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		C8BE163D2F0E7D6A00CC1920 /* ProfileGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGradient.swift; sourceTree = "<group>"; };
 		C8BE163F2F0E7F1F00CC1920 /* ProfileImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImagePicker.swift; sourceTree = "<group>"; };
@@ -202,6 +210,7 @@
 				C8C66A5B2F0BB79000A242F3 /* Film.swift */,
 				C863129D2F12B7A70023ADB0 /* Person.swift */,
 				C89EB4A02F13C15800E759ED /* Location.swift */,
+				C89EB4A82F13C40800E759ED /* Species.swift */,
 				C89EB4942F13B86B00E759ED /* Vehicle.swift */,
 				C8BE164B2F0FC9CC00CC1920 /* Profile.swift */,
 				C89EB49A2F13BFF400E759ED /* WikiCategory.swift */,
@@ -216,6 +225,7 @@
 				C89EB49E2F13C14E00E759ED /* LocationDTO.swift */,
 				C86312952F12B78D0023ADB0 /* PersonDTO.swift */,
 				C89EB4922F13B83000E759ED /* VehicleDTO.swift */,
+				C89EB4A62F13C3C700E759ED /* SpeciesDTO.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -258,9 +268,11 @@
 				C8C66A7A2F0BCFAE00A242F3 /* FeaturedFilmCard.swift */,
 				C8BE16432F0EB46D00CC1920 /* CachedFilmCard.swift */,
 				C8C66A7C2F0BD19A00A242F3 /* FilmsCarrousel.swift */,
+				C89EB4AA2F13C5A300E759ED /* SpeciesListView.swift */,
 				C8C66A7E2F0BD6D500A242F3 /* FilmList.swift */,
 				C89EB4A42F13C33700E759ED /* LocationListView.swift */,
 				C86312A72F12C33B0023ADB0 /* PeopleListView.swift */,
+				C89EB4AC2F13C5B500E759ED /* SpeciesRow.swift */,
 				C89EB4962F13BBBC00E759ED /* VehicleListView.swift */,
 				C89EB49C2F13C01900E759ED /* WikiCategoryListView.swift */,
 				C8BE163F2F0E7F1F00CC1920 /* ProfileImagePicker.swift */,
@@ -388,12 +400,15 @@
 				C8BE164E2F0FCDB200CC1920 /* ProfileDataContainer.swift in Sources */,
 				C89EB4A12F13C15800E759ED /* Location.swift in Sources */,
 				C8C66A712F0BBED000A242F3 /* ImageDownloader.swift in Sources */,
+				C89EB4AB2F13C5A300E759ED /* SpeciesListView.swift in Sources */,
 				C8C66A5C2F0BB79000A242F3 /* Film.swift in Sources */,
 				C8BE163E2F0E7D6A00CC1920 /* ProfileGradient.swift in Sources */,
 				C8BE16542F1000AA00CC1920 /* ProfileEmoji.swift in Sources */,
+				C89EB4A72F13C3C700E759ED /* SpeciesDTO.swift in Sources */,
 				C8BE164A2F0FC6B700CC1920 /* FilmSearchField.swift in Sources */,
 				C8BE16422F0EAA8900CC1920 /* FilmsGridView.swift in Sources */,
 				C8C66A662F0BB87600A242F3 /* NetworkError.swift in Sources */,
+				C89EB4AD2F13C5B500E759ED /* SpeciesRow.swift in Sources */,
 				C8C66A852F0BF81A00A242F3 /* WikiView.swift in Sources */,
 				C8C66A832F0BE57700A242F3 /* SearchVm.swift in Sources */,
 				C8C66A672F0BB87600A242F3 /* NetworkInteractor.swift in Sources */,
@@ -426,6 +441,7 @@
 				C86312962F12B78D0023ADB0 /* PersonDTO.swift in Sources */,
 				C83961532F12DB9000ABCA07 /* InfoRow.swift in Sources */,
 				C8C66A5A2F0BB78200A242F3 /* FilmDTO.swift in Sources */,
+				C89EB4A92F13C40800E759ED /* Species.swift in Sources */,
 				C8C66A5F2F0BB82600A242F3 /* NetworkRepository.swift in Sources */,
 				C89EB4A32F13C31A00E759ED /* LocationRow.swift in Sources */,
 				C8C66A542F0BB59700A242F3 /* Ghibli_filmsApp.swift in Sources */,

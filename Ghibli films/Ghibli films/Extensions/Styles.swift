@@ -205,6 +205,22 @@ struct LocationAvatarStyle: ViewModifier {
     }
 }
 
+struct SpeciesAvatarStyle: ViewModifier {
+    var size: CGFloat = 50
+    var color: Color = .purple
+
+    func body(content: Content) -> some View {
+        ZStack {
+            Circle()
+                .fill(color.opacity(0.15))
+                .frame(width: size, height: size)
+            content
+                .font(.title2)
+                .foregroundStyle(color)
+        }
+    }
+}
+
 // MARK: - Scroll Modifiers
 
 struct CarouselScrollStyle: ViewModifier {
@@ -407,6 +423,10 @@ extension View {
 
     func locationAvatarStyle(size: CGFloat = 50, color: Color = .green) -> some View {
         modifier(LocationAvatarStyle(size: size, color: color))
+    }
+
+    func speciesAvatarStyle(size: CGFloat = 50, color: Color = .purple) -> some View {
+        modifier(SpeciesAvatarStyle(size: size, color: color))
     }
 
     // Scroll Styles

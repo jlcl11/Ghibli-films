@@ -12,6 +12,7 @@ struct WikiView: View {
     @Query var people: [Person] = []
     @Query var vehicles: [Vehicle] = []
     @Query var locations: [Location] = []
+    @Query var species: [Species] = []
 
     var body: some View {
         NavigationStack {
@@ -39,6 +40,12 @@ struct WikiView: View {
                             label: "Locations",
                             color: .green
                         )
+                        StatCard(
+                            icon: "pawprint.fill",
+                            value: species.count,
+                            label: "Species",
+                            color: .purple
+                        )
                     }
                 }.listRowBackground(Color.clear)
 
@@ -46,6 +53,7 @@ struct WikiView: View {
                     WikiCategoryRow(icon: "person.2.fill", title: "Characters", subtitle: "\(people.count) characters", color: .blue, destination: AnyView(PeopleListView()))
                     WikiCategoryRow(icon: "airplane", title: "Vehicles", subtitle: "\(vehicles.count) vehicles", color: .orange, destination: AnyView(VehicleListView()))
                     WikiCategoryRow(icon: "map.fill", title: "Locations", subtitle: "\(locations.count) locations", color: .green, destination: AnyView(LocationListView()))
+                    WikiCategoryRow(icon: "pawprint.fill", title: "Species", subtitle: "\(species.count) species", color: .purple, destination: AnyView(SpeciesListView()))
                 }
             }
             .navigationTitle("Wiki")

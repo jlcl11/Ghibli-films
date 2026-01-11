@@ -42,6 +42,13 @@ actor DataContainer {
         } catch {
             print("Network error loading locations: \(error). Using cached data.")
         }
+
+        do {
+            let speciesDTO = try await network.getSpecies()
+            try loadSpecies(species: speciesDTO.map { $0.toSpecies })
+        } catch {
+            print("Network error loading species: \(error). Using cached data.")
+        }
     }
 
     /// Toggle watched status for a film by ID
@@ -210,6 +217,37 @@ actor DataContainer {
             } else {
                 // INSERT new location
                 modelContext.insert(location)
+            }
+        }
+
+        // Batch save all changes
+        if modelContext.hasChanges {
+            try modelContext.save()
+        }
+    }
+
+    /// Upsert species into SwiftData (insert or update)
+    private func loadSpecies(species: [Species]) throws {
+        for speciesItem in species {
+            let speciesID = speciesItem.id
+
+            // Check if species already exists
+            var fetchSpecies = FetchDescriptor<Species>(predicate: #Predicate { $0.id == speciesID })
+            fetchSpecies.fetchLimit = 1
+            let querySpecies = try modelContext.fetch(fetchSpecies)
+
+            if let existingSpecies = querySpecies.first {
+                // UPDATE existing species
+                existingSpecies.name = speciesItem.name
+                existingSpecies.classification = speciesItem.classification
+                existingSpecies.eyeColor = speciesItem.eyeColor
+                existingSpecies.hairColor = speciesItem.hairColor
+                existingSpecies.people = speciesItem.people
+                existingSpecies.films = speciesItem.films
+                existingSpecies.url = speciesItem.url
+            } else {
+                // INSERT new species
+                modelContext.insert(speciesItem)
             }
         }
 
