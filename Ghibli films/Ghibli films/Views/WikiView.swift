@@ -11,6 +11,7 @@ import SwiftData
 struct WikiView: View {
     @Query var people: [Person] = []
     @Query var vehicles: [Vehicle] = []
+    @Query var locations: [Location] = []
 
     var body: some View {
         NavigationStack {
@@ -32,12 +33,19 @@ struct WikiView: View {
                             label: "Vehicles",
                             color: .orange
                         )
+                        StatCard(
+                            icon: "map.fill",
+                            value: locations.count,
+                            label: "Locations",
+                            color: .green
+                        )
                     }
                 }.listRowBackground(Color.clear)
 
                 Section {
                     WikiCategoryRow(icon: "person.2.fill", title: "Characters", subtitle: "\(people.count) characters", color: .blue, destination: AnyView(PeopleListView()))
                     WikiCategoryRow(icon: "airplane", title: "Vehicles", subtitle: "\(vehicles.count) vehicles", color: .orange, destination: AnyView(VehicleListView()))
+                    WikiCategoryRow(icon: "map.fill", title: "Locations", subtitle: "\(locations.count) locations", color: .green, destination: AnyView(LocationListView()))
                 }
             }
             .navigationTitle("Wiki")
