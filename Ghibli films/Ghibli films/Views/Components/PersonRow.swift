@@ -11,38 +11,38 @@ struct PersonRow: View {
     let person: Person
     let allFilms: [Film]
     @State private var isExpanded = false
-
+    
     var personFilms: [Film] {
         allFilms.filter { film in
             person.films.contains(film.url)
         }
     }
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 12) {
                 Image(systemName: "person.fill")
                     .personAvatarStyle()
-
+                
                 VStack(alignment: .leading, spacing: 4) {
                     Text(person.name)
                         .font(.headline)
-
+                    
                     HStack(spacing: 8) {
                         if !person.gender.isEmpty && person.gender != "NA" {
                             Label(person.gender, systemImage: "figure.stand")
                                 .secondaryTextStyle()
                         }
-
+                        
                         if !person.age.isEmpty && person.age != "NA" {
                             Label(person.age, systemImage: "calendar")
                                 .secondaryTextStyle()
                         }
                     }
                 }
-
+                
                 Spacer()
-
+                
                 Image(systemName: "chevron.right")
                     .font(.caption)
                     .foregroundStyle(.secondary)
@@ -54,24 +54,24 @@ struct PersonRow: View {
                     isExpanded.toggle()
                 }
             }
-
+            
             if isExpanded {
                 VStack(alignment: .leading, spacing: 12) {
                     Divider()
-
+                    
                     VStack(spacing: 8) {
                         InfoRow(label: "Eye Color", value: person.eyeColor)
                         InfoRow(label: "Hair Color", value: person.hairColor)
                     }
-
+                    
                     if !personFilms.isEmpty {
                         Text("Appears in")
                             .secondaryTextStyle()
-
+                        
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack(spacing: 8) {
                                 ForEach(personFilms) { film in
-                                    NavigationLink(value: film) {
+                                    NavigationLink(destination: FilmDetail(film: film)) {
                                         CachedFilmCard(film: film)
                                     }
                                     .buttonStyle(.plain)
@@ -80,7 +80,7 @@ struct PersonRow: View {
                         }
                     }
                 }
-             //   .transition(.opacity.combined(with: .move(edge: .top)))
+                //   .transition(.opacity.combined(with: .move(edge: .top)))
             }
         }
         .padding(.vertical, 4)

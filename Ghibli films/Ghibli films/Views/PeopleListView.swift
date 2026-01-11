@@ -11,7 +11,6 @@ import SwiftData
 struct PeopleListView: View {
     @Query private var people: [Person]
     @Query private var allFilms: [Film]
-    @State private var selectedFilm: Film?
 
     var body: some View {
         if people.isEmpty {
@@ -22,13 +21,10 @@ struct PeopleListView: View {
             )
         } else {
             List(people) { person in
-                PersonRow(person: person, allFilms: allFilms, selectedFilm: $selectedFilm)
+                PersonRow(person: person, allFilms: allFilms)
             }
             .listStyle(.plain)
             .navigationTitle("Characters")
-            .navigationDestination(item: $selectedFilm) { film in
-                FilmDetail(film: film)
-            }
         }
     }
 }
@@ -36,7 +32,6 @@ struct PeopleListView: View {
 struct PersonRow: View {
     let person: Person
     let allFilms: [Film]
-    @Binding var selectedFilm: Film?
     @State private var isExpanded = false
 
     var personFilms: [Film] {
@@ -98,9 +93,7 @@ struct PersonRow: View {
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack(spacing: 8) {
                                 ForEach(personFilms) { film in
-                                    Button {
-                                        selectedFilm = film
-                                    } label: {
+                                    NavigationLink(destination: FilmDetail(film: film)) {
                                         CachedFilmCard(film: film)
                                     }
                                     .buttonStyle(.plain)
