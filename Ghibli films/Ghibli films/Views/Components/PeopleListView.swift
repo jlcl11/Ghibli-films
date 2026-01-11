@@ -13,19 +13,10 @@ struct PeopleListView: View {
     @Query private var allFilms: [Film]
 
     var body: some View {
-        if people.isEmpty {
-            ContentUnavailableView(
-                "No Characters Available",
-                systemImage: "person.2",
-                description: Text("Characters will appear here once loaded.")
-            )
-        } else {
-            List(people) { person in
+        WikiCategoryListView(category: .characters, isEmpty: people.isEmpty) {
+            ForEach(people) { person in
                 PersonRow(person: person, allFilms: allFilms)
             }
-            .listStyle(.plain)
-            .navigationTitle("Characters")
-
         }
     }
 }
