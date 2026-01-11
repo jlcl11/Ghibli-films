@@ -35,6 +35,13 @@ actor DataContainer {
         } catch {
             print("Network error loading vehicles: \(error). Using cached data.")
         }
+
+        do {
+            let locationsDTO = try await network.getLocations()
+            try loadLocations(locations: locationsDTO.map { $0.toLocation })
+        } catch {
+            print("Network error loading locations: \(error). Using cached data.")
+        }
     }
 
     /// Toggle watched status for a film by ID
@@ -172,6 +179,37 @@ actor DataContainer {
             } else {
                 // INSERT new vehicle
                 modelContext.insert(vehicle)
+            }
+        }
+
+        // Batch save all changes
+        if modelContext.hasChanges {
+            try modelContext.save()
+        }
+    }
+
+    /// Upsert locations into SwiftData (insert or update)
+    private func loadLocations(locations: [Location]) throws {
+        for location in locations {
+            let locationID = location.id
+
+            // Check if location already exists
+            var fetchLocations = FetchDescriptor<Location>(predicate: #Predicate { $0.id == locationID })
+            fetchLocations.fetchLimit = 1
+            let queryLocations = try modelContext.fetch(fetchLocations)
+
+            if let existingLocation = queryLocations.first {
+                // UPDATE existing location
+                existingLocation.name = location.name
+                existingLocation.climate = location.climate
+                existingLocation.terrain = location.terrain
+                existingLocation.surfaceWater = location.surfaceWater
+                existingLocation.residents = location.residents
+                existingLocation.films = location.films
+                existingLocation.url = location.url
+            } else {
+                // INSERT new location
+                modelContext.insert(location)
             }
         }
 

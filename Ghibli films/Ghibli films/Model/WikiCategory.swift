@@ -10,11 +10,13 @@ import SwiftUI
 enum WikiCategory {
     case characters
     case vehicles
+    case locations
 
     var title: String {
         switch self {
         case .characters: "Characters"
         case .vehicles: "Vehicles"
+        case .locations: "Locations"
         }
     }
 
@@ -22,6 +24,7 @@ enum WikiCategory {
         switch self {
         case .characters: "person.2.fill"
         case .vehicles: "airplane"
+        case .locations: "map.fill"
         }
     }
 
@@ -29,6 +32,7 @@ enum WikiCategory {
         switch self {
         case .characters: .blue
         case .vehicles: .orange
+        case .locations: .green
         }
     }
 
@@ -36,6 +40,7 @@ enum WikiCategory {
         switch self {
         case .characters: "No Characters Available"
         case .vehicles: "No Vehicles Available"
+        case .locations: "No Locations Available"
         }
     }
 
@@ -43,6 +48,7 @@ enum WikiCategory {
         switch self {
         case .characters: "person.2"
         case .vehicles: "car.2"
+        case .locations: "map"
         }
     }
 
@@ -50,6 +56,7 @@ enum WikiCategory {
         switch self {
         case .characters: "Characters will appear here once loaded."
         case .vehicles: "Vehicles will appear here once loaded."
+        case .locations: "Locations will appear here once loaded."
         }
     }
 }
