@@ -21,6 +21,8 @@
 		C89EB4952F13B86B00E759ED /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89EB4942F13B86B00E759ED /* Vehicle.swift */; };
 		C89EB4972F13BBBC00E759ED /* VehicleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89EB4962F13BBBC00E759ED /* VehicleListView.swift */; };
 		C89EB4992F13BC0400E759ED /* VehicleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89EB4982F13BC0400E759ED /* VehicleRow.swift */; };
+		C89EB49B2F13BFF400E759ED /* WikiCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89EB49A2F13BFF400E759ED /* WikiCategory.swift */; };
+		C89EB49D2F13C01900E759ED /* WikiCategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89EB49C2F13C01900E759ED /* WikiCategoryListView.swift */; };
 		C8BE163C2F0E738C00CC1920 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE163B2F0E738C00CC1920 /* ProfileView.swift */; };
 		C8BE163E2F0E7D6A00CC1920 /* ProfileGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE163D2F0E7D6A00CC1920 /* ProfileGradient.swift */; };
 		C8BE16402F0E7F1F00CC1920 /* ProfileImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BE163F2F0E7F1F00CC1920 /* ProfileImagePicker.swift */; };
@@ -76,6 +78,8 @@
 		C89EB4942F13B86B00E759ED /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		C89EB4962F13BBBC00E759ED /* VehicleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleListView.swift; sourceTree = "<group>"; };
 		C89EB4982F13BC0400E759ED /* VehicleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleRow.swift; sourceTree = "<group>"; };
+		C89EB49A2F13BFF400E759ED /* WikiCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiCategory.swift; sourceTree = "<group>"; };
+		C89EB49C2F13C01900E759ED /* WikiCategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiCategoryListView.swift; sourceTree = "<group>"; };
 		C8BE163B2F0E738C00CC1920 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		C8BE163D2F0E7D6A00CC1920 /* ProfileGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGradient.swift; sourceTree = "<group>"; };
 		C8BE163F2F0E7F1F00CC1920 /* ProfileImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImagePicker.swift; sourceTree = "<group>"; };
@@ -178,7 +182,6 @@
 				C8C66A802F0BDFC100A242F3 /* SearchView.swift */,
 				C8C66A842F0BF81A00A242F3 /* WikiView.swift */,
 				C8C66A8E2F0C128200A242F3 /* FavoritesFilm.swift */,
-				C89EB4962F13BBBC00E759ED /* VehicleListView.swift */,
 				C8BE163B2F0E738C00CC1920 /* ProfileView.swift */,
 			);
 			path = Views;
@@ -191,6 +194,7 @@
 				C8C66A5B2F0BB79000A242F3 /* Film.swift */,
 				C863129D2F12B7A70023ADB0 /* Person.swift */,
 				C8BE164B2F0FC9CC00CC1920 /* Profile.swift */,
+				C89EB49A2F13BFF400E759ED /* WikiCategory.swift */,
 				C89EB4942F13B86B00E759ED /* Vehicle.swift */,
 			);
 			path = Model;
@@ -246,6 +250,8 @@
 				C8C66A7C2F0BD19A00A242F3 /* FilmsCarrousel.swift */,
 				C8C66A7E2F0BD6D500A242F3 /* FilmList.swift */,
 				C86312A72F12C33B0023ADB0 /* PeopleListView.swift */,
+				C89EB4962F13BBBC00E759ED /* VehicleListView.swift */,
+				C89EB49C2F13C01900E759ED /* WikiCategoryListView.swift */,
 				C8BE163F2F0E7F1F00CC1920 /* ProfileImagePicker.swift */,
 				C8BE16472F0FC48B00CC1920 /* FilmCategoryRow.swift */,
 				C8BE16492F0FC6B700CC1920 /* FilmSearchField.swift */,
@@ -386,6 +392,7 @@
 				C8C66A7F2F0BD6D500A242F3 /* FilmList.swift in Sources */,
 				C8878D962F0C3A3600DA272C /* FilmDetailComponents.swift in Sources */,
 				C8F1ABC12F10300000000001 /* FilmRowComponents.swift in Sources */,
+				C89EB49B2F13BFF400E759ED /* WikiCategory.swift in Sources */,
 				C8F1ABC32F10300000000002 /* ProfileImagePickerComponents.swift in Sources */,
 				C89EB4952F13B86B00E759ED /* Vehicle.swift in Sources */,
 				C8F1ABC52F10300000000003 /* FilmSearchFieldComponents.swift in Sources */,
@@ -406,6 +413,7 @@
 				C8C66A5A2F0BB78200A242F3 /* FilmDTO.swift in Sources */,
 				C8C66A5F2F0BB82600A242F3 /* NetworkRepository.swift in Sources */,
 				C8C66A542F0BB59700A242F3 /* Ghibli_filmsApp.swift in Sources */,
+				C89EB49D2F13C01900E759ED /* WikiCategoryListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
