@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C839614F2F12D83000ABCA07 /* PersonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C839614E2F12D83000ABCA07 /* PersonDetailView.swift */; };
 		C83961512F12DB2D00ABCA07 /* PersonRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83961502F12DB2D00ABCA07 /* PersonRow.swift */; };
 		C83961532F12DB9000ABCA07 /* InfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83961522F12DB9000ABCA07 /* InfoRow.swift */; };
 		C86312962F12B78D0023ADB0 /* PersonDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86312952F12B78D0023ADB0 /* PersonDTO.swift */; };
@@ -59,7 +58,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C839614E2F12D83000ABCA07 /* PersonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailView.swift; sourceTree = "<group>"; };
 		C83961502F12DB2D00ABCA07 /* PersonRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonRow.swift; sourceTree = "<group>"; };
 		C83961522F12DB9000ABCA07 /* InfoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoRow.swift; sourceTree = "<group>"; };
 		C86312952F12B78D0023ADB0 /* PersonDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDTO.swift; sourceTree = "<group>"; };
@@ -235,7 +233,6 @@
 				C8C66A7A2F0BCFAE00A242F3 /* FeaturedFilmCard.swift */,
 				C8BE16432F0EB46D00CC1920 /* CachedFilmCard.swift */,
 				C8C66A7C2F0BD19A00A242F3 /* FilmsCarrousel.swift */,
-				C839614E2F12D83000ABCA07 /* PersonDetailView.swift */,
 				C8C66A7E2F0BD6D500A242F3 /* FilmList.swift */,
 				C86312A72F12C33B0023ADB0 /* PeopleListView.swift */,
 				C8BE163F2F0E7F1F00CC1920 /* ProfileImagePicker.swift */,
@@ -381,7 +378,6 @@
 				C8C66A7B2F0BCFAE00A242F3 /* FeaturedFilmCard.swift in Sources */,
 				C8BE16402F0E7F1F00CC1920 /* ProfileImagePicker.swift in Sources */,
 				C8C66A682F0BB87600A242F3 /* URL.swift in Sources */,
-				C839614F2F12D83000ABCA07 /* PersonDetailView.swift in Sources */,
 				C8C66A6D2F0BBA6200A242F3 /* FilmViewModel.swift in Sources */,
 				C8C66A792F0BC05B00A242F3 /* UIImage.swift in Sources */,
 				C8C66A692F0BB87600A242F3 /* URLSession.swift in Sources */,

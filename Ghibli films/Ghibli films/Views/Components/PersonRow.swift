@@ -10,6 +10,7 @@ import SwiftUI
 struct PersonRow: View {
     let person: Person
     let allFilms: [Film]
+    @State private var isExpanded = false
 
     var personFilms: [Film] {
         allFilms.filter { film in
@@ -20,15 +21,8 @@ struct PersonRow: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 12) {
-                ZStack {
-                    Circle()
-                        .fill(.blue.opacity(0.15))
-                        .frame(width: 50, height: 50)
-
-                    Image(systemName: "person.fill")
-                        .font(.title2)
-                        .foregroundStyle(.blue)
-                }
+                Image(systemName: "person.fill")
+                    .personAvatarStyle()
 
                 VStack(alignment: .leading, spacing: 4) {
                     Text(person.name)
@@ -37,40 +31,61 @@ struct PersonRow: View {
                     HStack(spacing: 8) {
                         if !person.gender.isEmpty && person.gender != "NA" {
                             Label(person.gender, systemImage: "figure.stand")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
+                                .secondaryTextStyle()
                         }
 
                         if !person.age.isEmpty && person.age != "NA" {
                             Label(person.age, systemImage: "calendar")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
+                                .secondaryTextStyle()
                         }
                     }
                 }
 
                 Spacer()
-            }
 
-            if !personFilms.isEmpty {
-                Text("Appears in")
+                Image(systemName: "chevron.right")
                     .font(.caption)
                     .foregroundStyle(.secondary)
+                    .rotationEffect(.degrees(isExpanded ? 90 : 0))
+            }
+            .contentShape(Rectangle())
+            .onTapGesture {
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    isExpanded.toggle()
+                }
+            }
 
-                ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHStack(spacing: 8) {
-                        ForEach(personFilms) { film in
-                            CachedFilmCard(film: film)
+            if isExpanded {
+                VStack(alignment: .leading, spacing: 12) {
+                    Divider()
+
+                    VStack(spacing: 8) {
+                        InfoRow(label: "Eye Color", value: person.eyeColor)
+                        InfoRow(label: "Hair Color", value: person.hairColor)
+                    }
+
+                    if !personFilms.isEmpty {
+                        Text("Appears in")
+                            .secondaryTextStyle()
+
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            LazyHStack(spacing: 8) {
+                                ForEach(personFilms) { film in
+                                    NavigationLink(value: film) {
+                                        CachedFilmCard(film: film)
+                                    }
+                                    .buttonStyle(.plain)
+                                }
+                            }
                         }
                     }
                 }
-                .allowsHitTesting(false)
+             //   .transition(.opacity.combined(with: .move(edge: .top)))
             }
         }
         .padding(.vertical, 4)
     }
 }
-
 
 #Preview {
     PersonRow(person: .mock, allFilms: [.mock])
