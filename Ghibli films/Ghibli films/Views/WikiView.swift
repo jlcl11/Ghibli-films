@@ -10,6 +10,8 @@ import SwiftData
 
 struct WikiView: View {
     @Query var people: [Person] = []
+    @Query var vehicles: [Vehicle] = []
+
     var body: some View {
         NavigationStack {
             List {
@@ -24,11 +26,18 @@ struct WikiView: View {
                             label: "Characters",
                             color: .blue
                         )
+                        StatCard(
+                            icon: "airplane",
+                            value: vehicles.count,
+                            label: "Vehicles",
+                            color: .orange
+                        )
                     }
-                }
-                
+                }.listRowBackground(Color.clear)
+
                 Section {
                     WikiCategoryRow(icon: "person.2.fill", title: "Characters", subtitle: "\(people.count) characters", color: .blue, destination: AnyView(PeopleListView()))
+                    WikiCategoryRow(icon: "airplane", title: "Vehicles", subtitle: "\(vehicles.count) vehicles", color: .orange, destination: AnyView(VehicleListView()))
                 }
             }
             .navigationTitle("Wiki")
