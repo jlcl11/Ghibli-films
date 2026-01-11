@@ -28,6 +28,13 @@ actor DataContainer {
         } catch {
             print("Network error loading people: \(error). Using cached data.")
         }
+
+        do {
+            let vehiclesDTO = try await network.getVehicles()
+            try loadVehicles(vehicles: vehiclesDTO.map { $0.toVehicle })
+        } catch {
+            print("Network error loading vehicles: \(error). Using cached data.")
+        }
     }
 
     /// Toggle watched status for a film by ID
@@ -134,6 +141,37 @@ actor DataContainer {
             } else {
                 // INSERT new person
                 modelContext.insert(person)
+            }
+        }
+
+        // Batch save all changes
+        if modelContext.hasChanges {
+            try modelContext.save()
+        }
+    }
+
+    /// Upsert vehicles into SwiftData (insert or update)
+    private func loadVehicles(vehicles: [Vehicle]) throws {
+        for vehicle in vehicles {
+            let vehicleID = vehicle.id
+
+            // Check if vehicle already exists
+            var fetchVehicles = FetchDescriptor<Vehicle>(predicate: #Predicate { $0.id == vehicleID })
+            fetchVehicles.fetchLimit = 1
+            let queryVehicles = try modelContext.fetch(fetchVehicles)
+
+            if let existingVehicle = queryVehicles.first {
+                // UPDATE existing vehicle
+                existingVehicle.name = vehicle.name
+                existingVehicle.vehicleDescription = vehicle.vehicleDescription
+                existingVehicle.vehicleClass = vehicle.vehicleClass
+                existingVehicle.length = vehicle.length
+                existingVehicle.pilot = vehicle.pilot
+                existingVehicle.films = vehicle.films
+                existingVehicle.url = vehicle.url
+            } else {
+                // INSERT new vehicle
+                modelContext.insert(vehicle)
             }
         }
 

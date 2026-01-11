@@ -2,7 +2,7 @@
 //  PersonDTO.swift
 //  EstudioGhibli
 //
-//  Created by José Luis Corral López on 18/12/25.
+//  Created by José Luis Corral López on 10/01/26.
 //
 
 import Foundation

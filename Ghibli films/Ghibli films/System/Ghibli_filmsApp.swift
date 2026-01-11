@@ -17,7 +17,7 @@ struct Ghibli_filmsApp: App {
             ContentView()
                 .environment(filmVM)
         }
-        .modelContainer(for: [Film.self, Profile.self, Person.self]) { result in
+        .modelContainer(for: [Film.self, Profile.self, Person.self, Vehicle.self]) { result in
             guard case .success(let container) = result else {
                 return
             }
