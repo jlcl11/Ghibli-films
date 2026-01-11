@@ -11,12 +11,14 @@ enum WikiCategory {
     case characters
     case vehicles
     case locations
+    case species
 
     var title: String {
         switch self {
         case .characters: "Characters"
         case .vehicles: "Vehicles"
         case .locations: "Locations"
+        case .species: "Species"
         }
     }
 
@@ -25,6 +27,7 @@ enum WikiCategory {
         case .characters: "person.2.fill"
         case .vehicles: "airplane"
         case .locations: "map.fill"
+        case .species: "pawprint.fill"
         }
     }
 
@@ -33,6 +36,7 @@ enum WikiCategory {
         case .characters: .blue
         case .vehicles: .orange
         case .locations: .green
+        case .species: .purple
         }
     }
 
@@ -41,6 +45,7 @@ enum WikiCategory {
         case .characters: "No Characters Available"
         case .vehicles: "No Vehicles Available"
         case .locations: "No Locations Available"
+        case .species: "No Species Available"
         }
     }
 
@@ -49,6 +54,7 @@ enum WikiCategory {
         case .characters: "person.2"
         case .vehicles: "car.2"
         case .locations: "map"
+        case .species: "pawprint"
         }
     }
 
@@ -57,6 +63,7 @@ enum WikiCategory {
         case .characters: "Characters will appear here once loaded."
         case .vehicles: "Vehicles will appear here once loaded."
         case .locations: "Locations will appear here once loaded."
+        case .species: "Species will appear here once loaded."
         }
     }
 }

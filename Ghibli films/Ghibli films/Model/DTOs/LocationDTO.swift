@@ -2,7 +2,7 @@
 //  LocationDTO.swift
 //  EstudioGhibli
 //
-//  Created by José Luis Corral López on 19/12/25.
+//  Created by José Luis Corral López on 10/01/26.
 //
 
 import Foundation

@@ -13,10 +13,7 @@ protocol NetworkRepository: Sendable, NetworkInteractor {
     func getPeople() async throws(NetworkError) -> [PersonDTO]
     func getVehicles() async throws(NetworkError) -> [VehicleDTO]
     func getLocations() async throws(NetworkError) -> [LocationDTO]
-   /* func getSpecies() async throws(NetworkError) -> [Species]
-    func getSpeciesItem(id: Int) async throws(NetworkError) -> Species
-    func getVehicle(id: Int) async throws(NetworkError) -> Vehicle
-    func getLocation(id: Int) async throws(NetworkError) -> Location*/
+    func getSpecies() async throws(NetworkError) -> [SpeciesDTO]
 }
 
 struct Network: NetworkRepository {
@@ -40,20 +37,8 @@ struct Network: NetworkRepository {
     func getLocations() async throws(NetworkError) -> [LocationDTO] {
         try await getJSON(.get(url: .getLocations), type: [LocationDTO].self)
     }
-/*
-    func getSpecies() async throws(NetworkError) -> [Species] {
-        try await getJSON(.get(url: .getSpecies), type: [SpeciesDTO].self).map(\.toSpecies)
-    }
 
-    func getSpeciesItem(id: Int) async throws(NetworkError) -> Species {
-        try await getJSON(.get(url: .getById(.species, id: id)), type: SpeciesDTO.self).toSpecies
+    func getSpecies() async throws(NetworkError) -> [SpeciesDTO] {
+        try await getJSON(.get(url: .getSpecies), type: [SpeciesDTO].self)
     }
-
-    func getVehicle(id: Int) async throws(NetworkError) -> Vehicle {
-        try await getJSON(.get(url: .getById(.vehicles, id: id)), type: VehicleDTO.self).toVehicle
-    }
-
-    func getLocation(id: Int) async throws(NetworkError) -> Location {
-        try await getJSON(.get(url: .getById(.locations, id: id)), type: LocationDTO.self).toLocation
-    }*/
 }
