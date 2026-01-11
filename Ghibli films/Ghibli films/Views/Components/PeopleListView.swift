@@ -11,6 +11,7 @@ import SwiftData
 struct PeopleListView: View {
     @Query private var people: [Person]
     @Query private var allFilms: [Film]
+    @State private var selectedFilm: Film?
 
     var body: some View {
         if people.isEmpty {
@@ -21,14 +22,13 @@ struct PeopleListView: View {
             )
         } else {
             List(people) { person in
-                NavigationLink {
-                    PersonDetailView(person: person)
-                } label: {
-                    PersonRow(person: person, allFilms: allFilms)
-                }
+                PersonRow(person: person, allFilms: allFilms)
             }
             .listStyle(.plain)
             .navigationTitle("Characters")
+            .navigationDestination(item: $selectedFilm) { film in
+                FilmDetail(film: film)
+            }
         }
     }
 }

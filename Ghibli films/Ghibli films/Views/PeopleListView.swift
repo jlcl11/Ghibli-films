@@ -11,6 +11,7 @@ import SwiftData
 struct PeopleListView: View {
     @Query private var people: [Person]
     @Query private var allFilms: [Film]
+    @State private var selectedFilm: Film?
 
     var body: some View {
         if people.isEmpty {
@@ -21,14 +22,13 @@ struct PeopleListView: View {
             )
         } else {
             List(people) { person in
-                NavigationLink {
-                    PersonDetailView(person: person)
-                } label: {
-                    PersonRow(person: person, allFilms: allFilms)
-                }
+                PersonRow(person: person, allFilms: allFilms, selectedFilm: $selectedFilm)
             }
             .listStyle(.plain)
             .navigationTitle("Characters")
+            .navigationDestination(item: $selectedFilm) { film in
+                FilmDetail(film: film)
+            }
         }
     }
 }
@@ -36,6 +36,8 @@ struct PeopleListView: View {
 struct PersonRow: View {
     let person: Person
     let allFilms: [Film]
+    @Binding var selectedFilm: Film?
+    @State private var isExpanded = false
 
     var personFilms: [Film] {
         allFilms.filter { film in
@@ -67,23 +69,65 @@ struct PersonRow: View {
                 }
 
                 Spacer()
+
+                Image(systemName: "chevron.right")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .rotationEffect(.degrees(isExpanded ? 90 : 0))
+            }
+            .contentShape(Rectangle())
+            .onTapGesture {
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    isExpanded.toggle()
+                }
             }
 
-            if !personFilms.isEmpty {
-                Text("Appears in")
-                    .secondaryTextStyle()
+            if isExpanded {
+                VStack(alignment: .leading, spacing: 12) {
+                    Divider()
 
-                ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHStack(spacing: 8) {
-                        ForEach(personFilms) { film in
-                            CachedFilmCard(film: film)
+                    VStack(spacing: 8) {
+                        PersonInfoRow(label: "Eye Color", value: person.eyeColor)
+                        PersonInfoRow(label: "Hair Color", value: person.hairColor)
+                    }
+
+                    if !personFilms.isEmpty {
+                        Text("Appears in")
+                            .secondaryTextStyle()
+
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            LazyHStack(spacing: 8) {
+                                ForEach(personFilms) { film in
+                                    Button {
+                                        selectedFilm = film
+                                    } label: {
+                                        CachedFilmCard(film: film)
+                                    }
+                                    .buttonStyle(.plain)
+                                }
+                            }
                         }
                     }
                 }
-                .allowsHitTesting(false)
+                .transition(.opacity.combined(with: .move(edge: .top)))
             }
         }
         .padding(.vertical, 4)
+    }
+}
+
+struct PersonInfoRow: View {
+    let label: String
+    let value: String
+
+    var body: some View {
+        HStack {
+            Text(label)
+                .metadataLabelStyle()
+            Spacer()
+            Text(value.isEmpty || value == "NA" ? "Unknown" : value)
+                .metadataValueStyle()
+        }
     }
 }
 
