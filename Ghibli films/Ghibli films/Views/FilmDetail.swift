@@ -12,12 +12,55 @@ struct FilmDetail: View {
     let film: Film
     @State private var image: UIImage?
     @Environment(\.modelContext) private var modelContext
-    
+
+    @Query private var allPeople: [Person]
+    @Query private var allSpecies: [Species]
+    @Query private var allLocations: [Location]
+    @Query private var allVehicles: [Vehicle]
+
+    var filmPeople: [Person] {
+        allPeople.filter { person in
+            guard let url = person.url else { return false }
+            return film.people.contains(url)
+        }
+    }
+
+    var filmSpecies: [Species] {
+        allSpecies.filter { species in
+            guard let url = species.url else { return false }
+            return film.species.contains(url)
+        }
+    }
+
+    var filmLocations: [Location] {
+        allLocations.filter { location in
+            guard let url = location.url else { return false }
+            return film.locations.contains(url)
+        }
+    }
+
+    var filmVehicles: [Vehicle] {
+        allVehicles.filter { vehicle in
+            guard let url = vehicle.url else { return false }
+            return film.vehicles.contains(url)
+        }
+    }
+
     var body: some View {
         ScrollView {
             BannerView(image: image)
             DetailInfo(film: film)
                 .safeAreaPadding()
+
+            RelatedContentSection(
+                people: filmPeople,
+                species: filmSpecies,
+                locations: filmLocations,
+                vehicles: filmVehicles
+            )
+            .safeAreaPadding()
+
+            Spacer()
         }
         .ignoresSafeArea()
         .toolbar {
