@@ -1,3 +1,7 @@
+
+<img width="1526" height="1087" alt="Group 2" src="https://github.com/user-attachments/assets/8b748a44-6f01-4f70-af92-81ffd5f77de6" />
+
+
 # Ghibli Films
 
 A modern iOS app for exploring Studio Ghibli's filmography, built with SwiftUI and SwiftData.
