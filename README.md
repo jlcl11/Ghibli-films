@@ -1,108 +1,111 @@
+<p align="center">
+  <img width="1500" alt="Ghibli Films hero" src="https://github.com/user-attachments/assets/8b748a44-6f01-4f70-af92-81ffd5f77de6" />
+</p>
 
-<img width="1526" height="1087" alt="Group 2" src="https://github.com/user-attachments/assets/8b748a44-6f01-4f70-af92-81ffd5f77de6" />
+<h1 align="center">
+  <br>
+  Ghibli Films
+  <br>
+</h1>
 
+<h3 align="center">A Studio Ghibli explorer built as a Clean Architecture showcase.</h3>
 
-# Ghibli Films
+<p align="center">
+  <strong>Clean Architecture</strong> &nbsp;·&nbsp; <strong>ModelActor</strong> &nbsp;·&nbsp; <strong>Actor-based caching</strong> &nbsp;·&nbsp; <strong>Protocol-Oriented</strong>
+</p>
 
-A modern iOS app for exploring Studio Ghibli's filmography, built with SwiftUI and SwiftData.
+<p align="center">
+  <img src="https://img.shields.io/badge/iOS_18%2B-000000?style=for-the-badge&logo=apple&logoColor=white" alt="iOS 18+">
+  <img src="https://img.shields.io/badge/Swift-F05138?style=for-the-badge&logo=swift&logoColor=white" alt="Swift">
+  <img src="https://img.shields.io/badge/SwiftUI-007AFF?style=for-the-badge&logo=swift&logoColor=white" alt="SwiftUI">
+  <img src="https://img.shields.io/badge/SwiftData-FF9500?style=for-the-badge&logo=swift&logoColor=white" alt="SwiftData">
+  <img src="https://img.shields.io/badge/Clean_Architecture-2D2D2D?style=for-the-badge" alt="Clean Architecture">
+</p>
+
+---
+
+## What is Ghibli Films
+
+A modern iOS app for exploring Studio Ghibli's filmography — but really, an excuse to put Clean Architecture, `ModelActor`, actor-based image caching and protocol-oriented networking on display in something visual and fun.
+
+Data comes from the open [Ghibli API](https://ghibliapi.vercel.app): films, characters, species, locations and vehicles. Everything is cached locally with SwiftData so the app works offline once you've browsed something.
+
+---
 
 ## Features
 
-### Films
-- Browse all Studio Ghibli films with a featured "Top Rated" carousel
-- View detailed film information including director, producer, runtime, and Rotten Tomatoes score
-- Mark films as "Watched" or "Favorite"
-- Pull-to-refresh to sync latest data from the API
+| | |
+|---|---|
+| **Films** | Browse all Studio Ghibli films with a "Top Rated" carousel. View director, producer, runtime, Rotten Tomatoes score. Mark as Watched or Favourite. Pull-to-refresh syncs the API. |
+| **Search** | Real-time, case-insensitive search across film titles, original Japanese titles, directors and release dates. |
+| **Wiki** | Cross-referenced universe: characters, species, locations and vehicles — each entry shows which films it appears in. Film details show their related entities. |
+| **Saved** | Watched + Favourites lists with filtering. Persisted with SwiftData via a thread-safe `ModelActor`. |
+| **Profile** | Choose from 50+ emoji avatars, set username and favourite film, pick one of 8 gradient themes (Sunset, Ocean, Forest, Lavender, Fire, Mint, Rose, Galaxy). |
 
-### Search
-- Real-time search across film titles, original Japanese titles, directors, and release dates
-- Case-insensitive filtering with instant results
-
-### Wiki
-- Explore the Ghibli universe with categorized content:
-  - **Characters** - People and protagonists from all films
-  - **Species** - Different species featured across the movies
-  - **Locations** - Iconic places from the Ghibli world
-  - **Vehicles** - Memorable machines and transport
-- Each wiki entry shows which films it appears in
-- Film details show related characters, species, locations, and vehicles
-
-### Saved
-- Track your watched films
-- Curate your favorites list
-- Filter between favorites and watched
-
-### Profile
-- Customize your avatar with 50+ emoji options
-- Set your username
-- Choose your favorite film
-- Pick from 8 gradient themes (Sunset, Ocean, Forest, Lavender, Fire, Mint, Rose, Galaxy)
-
-## Technologies
-
-- **SwiftUI** - Declarative UI framework
-- **SwiftData** - Modern persistence framework
-- **Swift Concurrency** - async/await and actors for thread safety
-- **@Observable** - Modern state management
+---
 
 ## Architecture
 
-The app follows clean architecture principles:
-
-- **MVVM** pattern with Observable ViewModels
-- **Repository Pattern** for network abstraction
-- **ModelActor** for thread-safe database operations
-- **DTO Pattern** for API response mapping
-- **Protocol-Oriented** networking layer
-
-### Key Components
-
-- `DataContainer` - SwiftData operations with upsert logic
-- `ImageDownloader` - Actor-based image caching (memory + disk)
-- `NetworkRepository` - API communication layer
-- Custom `ViewModifier` system for consistent styling
-
-## Data Source
-
-Data is fetched from the [Ghibli API](https://ghibliapi.vercel.app), including:
-- Films with metadata and imagery
-- Characters with attributes
-- Vehicles, locations, and species
-
-The app supports offline usage with cached data.
-
-## Requirements
-
-- iOS 18.0+
-- Xcode 16.0+
-
-## Installation
-
-1. Clone the repository
-```bash
-git clone https://github.com/yourusername/Ghibli-films.git
-```
-
-2. Open `Ghibli films.xcodeproj` in Xcode
-
-3. Build and run on simulator or device
-
-## Project Structure
+The app follows Clean Architecture: presentation, domain and data layers communicate through protocols. The database layer is fully isolated behind a `ModelActor`, and image loading runs on a dedicated `Actor` with memory + disk tiers.
 
 ```
 Ghibli films/
-├── System/          # App entry point
-├── Views/           # SwiftUI views
-│   └── Components/  # Reusable UI components
-├── ViewModels/      # Observable state management
-├── Model/           # SwiftData models
-│   └── DTOs/        # API response objects
-├── Persistance/     # Database containers
-├── Interface/       # Networking layer
-├── Repository/      # API abstraction
-└── Extensions/      # Styles and utilities
+  System/                 App entry point and shared services
+  Views/                  SwiftUI screens
+    Components/           Reusable cards, rows, modifiers
+  ViewModels/             @Observable state holders
+  Model/                  SwiftData entities + domain models
+    DTOs/                 API response objects
+  Persistance/            DataContainer (ModelActor) with upsert logic
+  Interface/              URLSession networking layer
+  Repository/             Protocol-based API abstraction
+  Extensions/             ViewModifier system for consistent styling
 ```
 
-## License
+### Key Components
 
-This project is for educational purposes. Studio Ghibli and all related properties are trademarks of Studio Ghibli Inc.
+| Component | Role |
+|---|---|
+| **DataContainer** | `ModelActor` wrapping SwiftData operations with upsert logic |
+| **ImageDownloader** | Actor-based image caching — memory tier + disk tier |
+| **NetworkRepository** | Protocol-fronted API client, mockable for tests |
+| **ViewModifier system** | Centralised theming and styling primitives |
+
+---
+
+## Quick Start
+
+**Requirements:** Xcode 16+ · iOS 18+ · Swift Concurrency on a Mac with Apple Silicon recommended
+
+```bash
+git clone https://github.com/jlcl11/Ghibli-films.git
+cd Ghibli-films
+open "Ghibli films.xcodeproj"
+```
+
+Build and run on a simulator or device.
+
+---
+
+## Tech Stack
+
+| Technology | Role |
+|---|---|
+| **Swift Concurrency** | async/await, actors and `Sendable` correctness throughout |
+| **SwiftUI + @Observable** | Declarative UI with modern reactive state |
+| **SwiftData + ModelActor** | Thread-safe local persistence with upsert logic |
+| **Repository pattern** | Network and database abstracted behind protocols |
+| **Actor-based ImageDownloader** | Memory + disk image cache with isolation guarantees |
+| **DTOs** | Clean separation between API responses and domain models |
+
+---
+
+## Data Source
+
+Films, characters, species, locations and vehicles fetched from the [Ghibli API](https://ghibliapi.vercel.app). Imagery and titles are property of Studio Ghibli Inc. and used for educational portfolio purposes only.
+
+---
+
+<p align="center">
+  Built by <a href="https://github.com/jlcl11">Jose Luis Corral Lopez</a> · Clean Architecture portfolio sample
+</p>
