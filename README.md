@@ -8,25 +8,25 @@
   <br>
 </h1>
 
-<h3 align="center">A Studio Ghibli explorer built as a Clean Architecture showcase.</h3>
+<h3 align="center">A Studio Ghibli explorer built with SwiftUI, SwiftData and Swift concurrency.</h3>
 
 <p align="center">
-  <strong>Clean Architecture</strong> &nbsp;·&nbsp; <strong>ModelActor</strong> &nbsp;·&nbsp; <strong>Actor-based caching</strong> &nbsp;·&nbsp; <strong>Protocol-Oriented</strong>
+  <strong>MVVM + Repository</strong> &nbsp;·&nbsp; <strong>ModelActor</strong> &nbsp;·&nbsp; <strong>Actor-based image cache</strong> &nbsp;·&nbsp; <strong>SwiftData</strong>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/iOS_18%2B-000000?style=for-the-badge&logo=apple&logoColor=white" alt="iOS 18+">
+  <img src="https://img.shields.io/badge/iOS_26%2B-000000?style=for-the-badge&logo=apple&logoColor=white" alt="iOS 26+">
   <img src="https://img.shields.io/badge/Swift-F05138?style=for-the-badge&logo=swift&logoColor=white" alt="Swift">
   <img src="https://img.shields.io/badge/SwiftUI-007AFF?style=for-the-badge&logo=swift&logoColor=white" alt="SwiftUI">
   <img src="https://img.shields.io/badge/SwiftData-FF9500?style=for-the-badge&logo=swift&logoColor=white" alt="SwiftData">
-  <img src="https://img.shields.io/badge/Clean_Architecture-2D2D2D?style=for-the-badge" alt="Clean Architecture">
+  <img src="https://img.shields.io/badge/MVVM_%2B_Repository-2D2D2D?style=for-the-badge" alt="MVVM + Repository">
 </p>
 
 ---
 
 ## What is Ghibli Films
 
-A modern iOS app for exploring Studio Ghibli's filmography — but really, an excuse to put Clean Architecture, `ModelActor`, actor-based image caching and protocol-oriented networking on display in something visual and fun.
+A modern iOS app for exploring Studio Ghibli's filmography — but really, an excuse to put `ModelActor`, an actor-based image cache and protocol-based networking on display in something visual and fun.
 
 Data comes from the open [Ghibli API](https://ghibliapi.vercel.app): films, characters, species, locations and vehicles. Everything is cached locally with SwiftData so the app works offline once you've browsed something.
 
@@ -46,7 +46,7 @@ Data comes from the open [Ghibli API](https://ghibliapi.vercel.app): films, char
 
 ## Architecture
 
-The app follows Clean Architecture: presentation, domain and data layers communicate through protocols. The database layer is fully isolated behind a `ModelActor`, and image loading runs on a dedicated `Actor` with memory + disk tiers.
+The app follows MVVM with a repository for networking. SwiftUI views read SwiftData through `@Query`, every database write goes through a `ModelActor`, and images load through an actor with a memory and a disk cache.
 
 ```
 Ghibli films/
@@ -68,14 +68,14 @@ Ghibli films/
 |---|---|
 | **DataContainer** | `ModelActor` wrapping SwiftData operations with upsert logic |
 | **ImageDownloader** | Actor-based image caching — memory tier + disk tier |
-| **NetworkRepository** | Protocol-fronted API client, mockable for tests |
+| **NetworkRepository** | Protocol-fronted API client |
 | **ViewModifier system** | Centralised theming and styling primitives |
 
 ---
 
 ## Quick Start
 
-**Requirements:** Xcode 16+ · iOS 18+ · Swift Concurrency on a Mac with Apple Silicon recommended
+**Requirements:** Xcode 26+ · iOS 26+ · Swift 6
 
 ```bash
 git clone https://github.com/jlcl11/Ghibli-films.git
@@ -94,7 +94,7 @@ Build and run on a simulator or device.
 | **Swift Concurrency** | async/await, actors and `Sendable` correctness throughout |
 | **SwiftUI + @Observable** | Declarative UI with modern reactive state |
 | **SwiftData + ModelActor** | Thread-safe local persistence with upsert logic |
-| **Repository pattern** | Network and database abstracted behind protocols |
+| **Repository pattern** | Network access behind a protocol |
 | **Actor-based ImageDownloader** | Memory + disk image cache with isolation guarantees |
 | **DTOs** | Clean separation between API responses and domain models |
 
@@ -106,6 +106,12 @@ Films, characters, species, locations and vehicles fetched from the [Ghibli API]
 
 ---
 
+## Credits
+
+The networking layer (`Interface/`) and the actor-based `ImageDownloader` are based on code from Apple Coding Academy's Swift Developer Program (Julio César Fernández Muñoz).
+
+---
+
 <p align="center">
-  Built by <a href="https://github.com/jlcl11">Jose Luis Corral Lopez</a> · Clean Architecture portfolio sample
+  Built by <a href="https://github.com/jlcl11">Jose Luis Corral Lopez</a> · Portfolio sample (2026)
 </p>
